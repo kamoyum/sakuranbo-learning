@@ -13,7 +13,7 @@ main{max-width:960px;padding:14px 14px 48px;margin:auto}.top{display:flex;align-
 .mode-nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin-bottom:10px}.mode-btn{border:2px solid #e9d5d4;background:#fff;color:#6b6877;border-radius:14px;min-height:57px;padding:7px 3px;font-size:clamp(11px,1.8vw,14px);font-weight:900;line-height:1.3}.mode-btn.active{background:#ac5068;color:white;border-color:#ac5068;box-shadow:0 3px 0 #d7a7ae}.mode-btn span{display:block;font-size:clamp(16px,3.1vw,23px)}.stage-guide{padding:11px 13px;background:#fff;border:1px solid #f0dbd3;border-radius:14px;margin-bottom:10px;font-weight:800;color:#746b70;font-size:14px;line-height:1.5}
 .progress{display:flex;gap:12px;align-items:center;margin-bottom:10px;font-size:13px;font-weight:900;color:#8b5263}.track{height:10px;background:#eee3df;border-radius:10px;flex:1;overflow:hidden}.fill{height:100%;background:#df788d;width:0;transition:width .18s}
 .problem-card{position:sticky;top:max(5px,env(safe-area-inset-top));z-index:20;background:#fff;border:2px solid #f2cec9;box-shadow:0 4px 0 #f0dcd4;border-radius:17px;text-align:center;padding:7px 10px;margin-bottom:13px}.problem-head{font-size:12px;color:#97777f;font-weight:800}.problem{margin:0;font-size:clamp(34px,6vw,52px);font-weight:1000;color:#8a4e65;line-height:1.18;letter-spacing:.03em}.problem .a{color:#de6473}.problem .b{color:#338fc6}.bridge{font-size:clamp(13px,2.5vw,19px);color:#287a61;font-weight:900;margin:4px 0 0;line-height:1.3;min-height:0}.bridge:empty{display:none}
-.play{display:grid;grid-template-columns:1.03fr .97fr;gap:12px;align-items:start}.panel{background:#fff;border:1.5px solid #eee0de;border-radius:20px;padding:16px;box-shadow:0 3px 0 #eee7e1;margin-bottom:12px}.panel h2{margin:0 0 9px;font-size:19px;color:#80576b}.panel p{margin:6px 0 10px;color:#717886;font-size:14px;line-height:1.55}.frame{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;max-width:420px;margin:auto;background:#fff9ee;border:2px solid #e9d1bd;border-radius:14px;padding:8px}.cell{aspect-ratio:1;background:#fff;border:2px solid #e8e2d8;border-radius:10px;display:flex;align-items:center;justify-content:center}.cell.open{border-style:dashed;border-color:#8dbfdf;background:#f4fafe}.cell.hot{background:#bfe8fa;border-color:#2687bf}.slotcount{color:#487da7;font-weight:950;font-size:17px}.dot{width:78%;height:78%;border-radius:50%;box-shadow:inset -4px -4px 0 #0001,inset 3px 4px 0 #fff7}.dot.red{background:#ee777b}.dot.blue{background:#55a9e3}
+.play{display:grid;grid-template-columns:1.03fr .97fr;gap:12px;align-items:start}.play.compact{grid-template-columns:minmax(0,1fr)}.play.compact #rightPanel{max-width:520px;width:100%;margin:0 auto 12px}.play.compact #leftPanel{display:none!important}.panel{background:#fff;border:1.5px solid #eee0de;border-radius:20px;padding:16px;box-shadow:0 3px 0 #eee7e1;margin-bottom:12px}.panel h2{margin:0 0 9px;font-size:19px;color:#80576b}.panel p{margin:6px 0 10px;color:#717886;font-size:14px;line-height:1.55}.frame{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;max-width:420px;margin:auto;background:#fff9ee;border:2px solid #e9d1bd;border-radius:14px;padding:8px}.cell{aspect-ratio:1;background:#fff;border:2px solid #e8e2d8;border-radius:10px;display:flex;align-items:center;justify-content:center}.cell.open{border-style:dashed;border-color:#8dbfdf;background:#f4fafe}.cell.hot{background:#bfe8fa;border-color:#2687bf}.slotcount{color:#487da7;font-weight:950;font-size:17px}.dot{width:78%;height:78%;border-radius:50%;box-shadow:inset -4px -4px 0 #0001,inset 3px 4px 0 #fff7}.dot.red{background:#ee777b}.dot.blue{background:#55a9e3}
 .tray{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;background:#edf8ff;border:2px dashed #acd0e7;border-radius:14px;max-width:420px;margin:10px auto 0;padding:9px;min-height:68px}.ball{height:48px;width:48px;min-width:48px;border:0;border-radius:50%;background:#55a9e3;box-shadow:inset -4px -4px 0 #267fac,0 3px 0 #c8e2f1;touch-action:none;user-select:none;-webkit-user-select:none}.ball:before{content:"";display:block;width:18px;height:18px;background:#ffffff89;border-radius:50%;transform:translate(6px,-6px)}.ball.dragging{opacity:.3}.ghost{position:fixed;width:50px;height:50px;background:#55a9e3;box-shadow:inset -4px -4px 0 #267fac,0 4px 13px #0003;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);z-index:1000}.legend{display:flex;justify-content:center;gap:14px;font-size:12px;font-weight:800;color:#6e7a85;margin-top:10px}.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;background:#ee777b;margin-right:5px}.legend .blue{background:#55a9e3}
 .cherry{position:relative;width:min(100%,260px);height:155px;margin:0 auto}.root,.leaf{position:absolute;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:31px;font-weight:950;color:#fff}.root{width:58px;height:58px;top:0;left:calc(50% - 29px);background:#70af83;z-index:1}.cherry svg{position:absolute;width:100%;height:80px;top:39px;left:0}.leaf{width:66px;height:66px;top:87px;border:3px solid white;box-shadow:0 2px 0 #d4dbd7}.leaf.left{left:calc(26% - 33px);background:#ef7b80}.leaf.right{right:calc(26% - 33px);background:#56a4e3}.split-label{display:flex;justify-content:space-around;font-size:12px;color:#7b8190;font-weight:800;gap:8px}.split-label span{width:45%;text-align:center}
 .strategy{font-size:17px;font-weight:900;line-height:1.7;color:#387961;text-align:center;background:#eff9f0;border-radius:11px;padding:8px;margin-top:9px}.question{margin-top:10px;text-align:center}.question h2{font-size:clamp(19px,4vw,25px);color:#a14d64;margin:6px 0}.question p{margin:3px 0 12px}.choices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.choice{min-height:65px;border:2px solid #eab7c1;background:#fff0f1;color:#a2445f;border-radius:15px;font-size:clamp(21px,4vw,28px);font-weight:950}.choice:active,.primary:active{transform:translateY(2px)}.primary{min-height:60px;padding:12px 20px;border:0;background:#db667e;color:#fff;border-radius:17px;font-size:21px;font-weight:900;width:100%}.secondary{min-height:47px;padding:8px 13px;border:2px solid #e4d1d2;border-radius:12px;background:#fff;color:#806b77;font-weight:850}.help{margin-top:12px}.feedback{font-weight:850;text-align:center;min-height:26px;margin-top:12px;font-size:15px;color:#4c8b6b;line-height:1.5}.feedback.error{color:#a8524a}.feedback:empty{min-height:0}.success{font-size:22px;text-align:center;color:#45815d;font-weight:950;margin:8px 0}.result{font-size:29px;text-align:center;font-weight:1000;color:#905069;margin:8px 0}
@@ -105,7 +105,7 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 </style>
 </head>
 <body><main>
-<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v3.5</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
+<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v3.6</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
 <nav class="learning-tabs" role="tablist" aria-label="まなぶ ないよう">
 <button id="tabPractice" class="learning-tab active" type="button" role="tab" aria-selected="true" aria-controls="practiceView">🍒 10もん れんしゅう</button>
 <button id="tabPattern" class="learning-tab" type="button" role="tab" aria-selected="false" aria-controls="patternView">🔍 たしざんひょうの きまり</button>
@@ -280,7 +280,15 @@ function reviewQuestions(){const eligible=history.filter(r=>r.mode!=='review');c
  for(const p of shuffled(pool())){if(chosen.length>=10)break;if(!chosen.some(q=>q.a===p.a&&q.b===p.b))chosen.push(p)}return chosen;
 }
 function writeHistory(){if(!storageOk)return;try{localStorage.setItem(KEY,JSON.stringify(history.slice(-300)));}catch(e){storageOk=false;}$('storageStatus').textContent=storageOk?' （この端末に保存中）':' （保存できない環境です）'}
-function start(mode=s.mode,byUser=false){if(byUser)beginNextFarm();s.mode=mode;s.index=0;s.limit=10;s.shown=[];s.done=false;s.sessionResults=[];s.reviewPool=mode==='review'?reviewQuestions():[];s.plan=mode==='daily'?mixedPracticeQuestions(10,true):[];setQuestion();$('completion').classList.add('hidden');$('game').classList.remove('hidden');render();window.scrollTo({top:0,behavior:'auto'});}
+function focusCurrentQuestion(){
+ const card=document.querySelector('.problem-card');
+ if(!card)return;
+ try{card.scrollIntoView({behavior:'auto',block:'start'});}catch(e){window.scrollTo({top:Math.max(0,card.getBoundingClientRect().top+window.scrollY),behavior:'auto'});}
+}
+function focusCompletion(){
+ try{$('completion').scrollIntoView({behavior:'auto',block:'start'});}catch(e){window.scrollTo({top:0,behavior:'auto'});}
+}
+function start(mode=s.mode,byUser=false){if(byUser)beginNextFarm();s.mode=mode;s.index=0;s.limit=10;s.shown=[];s.done=false;s.sessionResults=[];s.reviewPool=mode==='review'?reviewQuestions():[];s.plan=mode==='daily'?mixedPracticeQuestions(10,true):[];setQuestion();$('completion').classList.add('hidden');$('game').classList.remove('hidden');render();if(byUser)focusCurrentQuestion();else window.scrollTo({top:0,behavior:'auto'});}
 function setQuestion(){s.q=newProblem();s.shown.push(`${s.q.a}+${s.q.b}`);s.step=0;s.moved=0;s.wrong=0;s.hints=0;s.typed='';s.feedback='';s.feedbackError=false;}
 const need=()=>10-s.q.a;const rest=()=>s.q.b-need();const sum=()=>s.q.a+s.q.b;
 function showStory(){
@@ -374,10 +382,12 @@ function render(){
      `<h2>${a} ＋ ${b} は いくつ？</h2><p>10 ＋ ${r} で かんがえよう</p>${numberChoices(sum(),'sum')}${actionsHelp()}`;
  }else{
    // 自力・おさらい・毎日の練習は和を入力する。助けは明示的に使った場合だけ表示。
-   left=`<h2>じぶんで けいさん</h2><p>はじめは ずを かくして いるよ。こまったら ヒントを つかって OK。</p>${s.hints>=1?`<h2>ヒント ${s.hints>=2?'②':'①'}</h2>${showTenFrame(a,0,false,false)}`:'<div style="font-size:64px;text-align:center;margin:10px 0" aria-hidden="true">🧠</div>'}${s.hints>=2?`<div class="strategy">${cherry(a,b,n,'？')}${b} ＝ ${n} ＋ □</div>`:''}`;
+   left=s.hints>=1?`<h2>ヒント ${s.hints>=2?'②':'①'}</h2>${showTenFrame(a,0,false,false)}${s.hints>=2?`<div class="strategy">${cherry(a,b,n,'？')}${b} ＝ ${n} ＋ □</div>`:''}`:'';
    right=`<h2>こたえを おしてね</h2>${answerKeypad()}`;
    question=`<p>まちがえても だいじょうぶ。じぶんで かんがえるのが たいせつ。</p>${s.hints<2?actionsHelp():''}`;
  }
+ const compact=!win&&['mental','review','daily','drill'].includes(s.mode)&&s.hints===0;
+ document.querySelector('.play').classList.toggle('compact',compact);
  $('leftPanel').innerHTML=left;$('rightPanel').innerHTML=right;$('questionPanel').innerHTML=question+`<div class="feedback ${s.feedbackError?'error':''}" id="feedback" role="status" aria-live="polite">${s.feedback}</div>`;
  document.querySelectorAll('.choice').forEach(el=>el.addEventListener('click',()=>pickNumber(Number(el.dataset.answer),el.dataset.kind)));
  if(s.mode==='beads'&&s.step===0)dragSetup();
@@ -394,13 +404,13 @@ function render(){
  $('next')?.addEventListener('click',advance);
  updateStats();
 }
-function advance(){s.index++;if(s.index>=s.limit){finishSession();return;}setQuestion();render();window.scrollTo({top:0,behavior:'auto'})}
+function advance(){s.index++;if(s.index>=s.limit){finishSession();return;}setQuestion();render();focusCurrentQuestion()}
 function finishSession(){if(s.done||s.sessionResults.length<s.limit)return;s.done=true;updateFarmFruits();growFarm();$('game').classList.add('hidden');$('completion').classList.remove('hidden');$('completionTitle').textContent=`${s.limit}もん おわったよ！`;
  const clean=s.sessionResults.filter(r=>r.clean).length;$('completionText').textContent=`ヒントなし・さいしょの こたえで できたのは ${clean} / ${s.limit}もん。がんばったね！`;
  let nextMode=STAGES.indexOf(s.mode)+1,eligible=STAGES.indexOf(s.mode)>=0&&s.mode!=='review'&&s.sessionResults.length>=5&&s.sessionResults.slice(-5).filter(r=>r.clean).length>=4&&nextMode<4;
  $('suggestBox').classList.toggle('hidden',!eligible);$('tryNextStage').classList.toggle('hidden',!eligible);
  if(eligible)$('suggestBox').textContent=`さいごの 5もんで 4もん できたよ。つぎの「${LABELS[MODES[nextMode]]}」も ためしてみよう。むずかしければ いつでも もどれるよ。`;
- updateStats();window.scrollTo({top:0,behavior:'auto'});
+ updateStats();focusCompletion();
 }
 
 const patternShown=new Set();
