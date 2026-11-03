@@ -19,6 +19,21 @@ main{max-width:960px;padding:14px 14px 48px;margin:auto}.top{display:flex;align-
 .strategy{font-size:17px;font-weight:900;line-height:1.7;color:#387961;text-align:center;background:#eff9f0;border-radius:11px;padding:8px;margin-top:9px}.question{margin-top:10px;text-align:center}.question h2{font-size:clamp(19px,4vw,25px);color:#a14d64;margin:6px 0}.question p{margin:3px 0 12px}.choices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.choice{min-height:65px;border:2px solid #eab7c1;background:#fff0f1;color:#a2445f;border-radius:15px;font-size:clamp(21px,4vw,28px);font-weight:950}.choice:active,.primary:active{transform:translateY(2px)}.primary{min-height:60px;padding:12px 20px;border:0;background:#db667e;color:#fff;border-radius:17px;font-size:21px;font-weight:900;width:100%}.secondary{min-height:47px;padding:8px 13px;border:2px solid #e4d1d2;border-radius:12px;background:#fff;color:#806b77;font-weight:850}.help{margin-top:12px}.feedback{font-weight:850;text-align:center;min-height:26px;margin-top:12px;font-size:15px;color:#4c8b6b;line-height:1.5}.feedback.error{color:#a8524a}.feedback:empty{min-height:0}.success{font-size:22px;text-align:center;color:#45815d;font-weight:950;margin:8px 0}.result{font-size:29px;text-align:center;font-weight:1000;color:#905069;margin:8px 0}
 .keypad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:335px;gap:8px;margin:10px auto}.keypad button{min-height:53px;background:#fff;border:2px solid #d9dce2;border-radius:13px;font-size:24px;font-weight:950;color:#465f75}.keypad .del{font-size:17px;color:#8b5b68}.typed{font-size:34px;font-weight:1000;letter-spacing:.1em;color:#93516b;min-height:50px;text-align:center;border-bottom:3px solid #e3cdd2;margin:4px auto 8px;max-width:170px}.completion{text-align:center;padding:28px 14px;background:white;border:1.5px solid #f0d7da;border-radius:21px}.completion h2{font-size:29px;color:#ad5669}.suggest{padding:12px;background:#ecf8ef;color:#387b59;border-radius:13px;font-weight:850;line-height:1.6;margin:12px 0}.small-note{color:#7b808a;font-size:12px;line-height:1.6;margin-top:9px}
 .farm-status{display:flex;align-items:center;gap:12px;background:#f2faf1;border:1.5px solid #cbe4cd;border-radius:16px;padding:9px 12px;margin:0 0 12px;color:#396b4e;min-width:0}
+.farm-tree-panel{display:block;max-width:100%;padding:12px 14px;background:linear-gradient(160deg,#F7FBF5,#F4F9F0);border-color:#CBDFCD}
+.farm-tree-head{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#477359;font-size:15px;margin:0 0 6px}
+.farm-tree-head span{font-size:18px;font-weight:950;white-space:nowrap;color:#A24E68}
+.farm-tree-box{background:#fff;border-radius:15px;padding:5px 12px 8px;display:grid;justify-items:center;gap:2px}
+.farm-tree-art{display:block;width:min(100%,290px);height:auto;max-height:152px;overflow:visible}
+.farm-cherry{opacity:0;transform:translateY(-7px) scale(.7);transform-box:fill-box;transform-origin:center;pointer-events:none}
+.farm-cherry.grown{opacity:1;transform:translateY(0) scale(1)}
+.farm-today-message{text-align:center;margin:0;font-size:13px;line-height:1.5;color:#53745B;font-weight:900}
+.farm-fruit-bar{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:5px;margin:9px 0 10px}
+.farm-fruit-unit{height:11px;background:#DFE6DB;border-radius:99px}
+.farm-fruit-unit.grown{background:#E57992}
+.farm-longterm{display:flex;align-items:center;gap:10px;border-top:1px solid #D9E8D7;padding-top:8px}
+@media(max-width:420px){.farm-tree-panel{padding:10px}.farm-tree-art{width:min(100%,250px);max-height:130px}.farm-tree-box{padding:4px 8px 7px}.farm-fruit-bar{gap:4px}.farm-longterm .farm-figure{font-size:25px}.farm-today-message{font-size:12px}}
+@media(prefers-reduced-motion:no-preference){.farm-cherry.grown{transition:opacity .3s ease-out,transform .3s ease-out}}
+
 .farm-figure{font-size:35px;line-height:1.2;flex:0 0 auto}
 .farm-copy{min-width:0;flex:1}.farm-name{font-weight:950;font-size:14px;margin:0 0 2px}.farm-detail{font-size:12px;font-weight:800;line-height:1.4}
 .farm-progress{font-weight:900;font-size:12px;white-space:nowrap;color:#557664}
@@ -84,7 +99,7 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 </style>
 </head>
 <body><main>
-<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v3.3</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
+<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v3.4</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
 <nav class="learning-tabs" role="tablist" aria-label="まなぶ ないよう">
 <button id="tabPractice" class="learning-tab active" type="button" role="tab" aria-selected="true" aria-controls="practiceView">🍒 10もん れんしゅう</button>
 <button id="tabPattern" class="learning-tab" type="button" role="tab" aria-selected="false" aria-controls="patternView">🔍 たしざんひょうの きまり</button>
@@ -101,11 +116,20 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 <nav class="mode-nav" id="modeNav" aria-label="れんしゅうの だんかい">
 <button data-mode="beads" class="mode-btn active" aria-pressed="true"><span>🔴</span>① たま</button><button data-mode="picture" class="mode-btn" aria-pressed="false"><span>▦</span>② ず</button><button data-mode="bond" class="mode-btn" aria-pressed="false"><span>🍒</span>③ しき</button><button data-mode="mental" class="mode-btn" aria-pressed="false"><span>💡</span>④ じぶん</button><button data-mode="review" class="mode-btn" aria-pressed="false"><span>🌱</span>おさらい</button>
 </nav></details>
-<div id="farmStatus" class="farm-status" aria-label="さくらんぼ農園の育成状況">
- <span id="farmIcon" class="farm-figure" aria-hidden="true">🌰</span>
- <div class="farm-copy"><div class="farm-name">🍒 さくらんぼ のうえん</div><div id="farmDetail" class="farm-detail">10もん クリアで そだつよ</div></div>
- <div id="farmProgress" class="farm-progress" aria-label="成長段階">0 / 10</div>
-</div>
+<section id="farmStatus" class="farm-status farm-tree-panel" aria-label="今日の10問とさくらんぼ農園の育成状況">
+ <div class="farm-tree-head"><strong>🍒 きょうの10もん</strong><span id="farmTodayCount">0 / 10</span></div>
+ <div class="farm-tree-box"><svg id="farmTree" class="farm-tree-art" viewBox="0 0 280 148" role="img" aria-label="10問を解くとさくらんぼが一つずつ増える木">
+ <path d="M139 138 V100 M139 112 L97 79 M139 110 L178 75 M139 95 L123 62 M139 96 L154 61" stroke="#936A4D" stroke-width="15" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+ <ellipse cx="76" cy="69" rx="50" ry="40" fill="#A0D1A6" opacity=".94"/><ellipse cx="119" cy="54" rx="57" ry="42" fill="#88BE95" opacity=".97"/><ellipse cx="166" cy="48" rx="54" ry="40" fill="#A6D6AD" opacity=".97"/><ellipse cx="211" cy="74" rx="52" ry="38" fill="#8FC49B" opacity=".97"/><ellipse cx="141" cy="82" rx="66" ry="43" fill="#B0DDB2" opacity=".92"/>
+ <path d="M73 140 Q139 147 207 140" stroke="#B2DABC" stroke-width="6" fill="none" stroke-linecap="round"/>
+ <g class="farm-cherry" data-fruit="1"><path d="M70 60 Q72 46 83 44" stroke="#53845B" stroke-width="2.5" fill="none"/><circle cx="64" cy="64" r="7.5" fill="#E7627D"/><circle cx="78" cy="64" r="7.5" fill="#D94466"/><circle cx="62" cy="62" r="2" fill="#FFE1E5"/></g><g class="farm-cherry" data-fruit="2"><path d="M103 47 Q105 33 116 31" stroke="#53845B" stroke-width="2.5" fill="none"/><circle cx="97" cy="51" r="7.5" fill="#E7627D"/><circle cx="111" cy="51" r="7.5" fill="#D94466"/><circle cx="95" cy="49" r="2" fill="#FFE1E5"/></g><g class="farm-cherry" data-fruit="3"><path d="M137 40 Q139 26 150 24" stroke="#53845B" stroke-width="2.5" fill="none"/><circle cx="131" cy="44" r="7.5" fill="#E7627D"/><circle cx="145" cy="44" r="7.5" fill="#D94466"/><circle cx="129" cy="42" r="2" fill="#FFE1E5"/></g><g class="farm-cherry" data-fruit="4"><path d="M174 51 Q176 37 187 35" stroke="#53845B" stroke-width="2.5" fill="none"/><circle cx="168" cy="55" r="7.5" fill="#E7627D"/><circle cx="182" cy="55" r="7.5" fill="#D94466"/><circle cx="166" cy="53" r="2" fill="#FFE1E5"/></g><g class="farm-cherry" data-fruit="5"><path d="M210 65 Q212 51 223 49" stroke="#53845B" stroke-width="2.5" fill="none"/><circle cx="204" cy="69" r="7.5" fill="#E7627D"/><circle cx="218" cy="69" r="7.5" fill="#D94466"/><circle cx="202" cy="67" r="2" fill="#FFE1E5"/></g><g class="farm-cherry" data-fruit="6"><path d="M66 90 Q68 76 79 74" stroke="#53845B" stroke-width="2.5" fill="none"/><circle cx="60" cy="94" r="7.5" fill="#E7627D"/><circle cx="74" cy="94" r="7.5" fill="#D94466"/><circle cx="58" cy="92" r="2" fill="#FFE1E5"/></g><g class="farm-cherry" data-fruit="7"><path d="M100 105 Q102 91 113 89" stroke="#53845B" stroke-width="2.5" fill="none"/><circle cx="94" cy="109" r="7.5" fill="#E7627D"/><circle cx="108" cy="109" r="7.5" fill="#D94466"/><circle cx="92" cy="107" r="2" fill="#FFE1E5"/></g><g class="farm-cherry" data-fruit="8"><path d="M136 82 Q138 68 149 66" stroke="#53845B" stroke-width="2.5" fill="none"/><circle cx="130" cy="86" r="7.5" fill="#E7627D"/><circle cx="144" cy="86" r="7.5" fill="#D94466"/><circle cx="128" cy="84" r="2" fill="#FFE1E5"/></g><g class="farm-cherry" data-fruit="9"><path d="M171 100 Q173 86 184 84" stroke="#53845B" stroke-width="2.5" fill="none"/><circle cx="165" cy="104" r="7.5" fill="#E7627D"/><circle cx="179" cy="104" r="7.5" fill="#D94466"/><circle cx="163" cy="102" r="2" fill="#FFE1E5"/></g><g class="farm-cherry" data-fruit="10"><path d="M207 95 Q209 81 220 79" stroke="#53845B" stroke-width="2.5" fill="none"/><circle cx="201" cy="99" r="7.5" fill="#E7627D"/><circle cx="215" cy="99" r="7.5" fill="#D94466"/><circle cx="199" cy="97" r="2" fill="#FFE1E5"/></g></svg>
+  <p id="farmTodayMessage" class="farm-today-message">10もんで みが いっぱい！</p>
+ </div>
+ <div id="farmFruitBar" class="farm-fruit-bar" aria-label="今日できた問題0問、全部で10問"><span class="farm-fruit-unit" data-unit="1"></span><span class="farm-fruit-unit" data-unit="2"></span><span class="farm-fruit-unit" data-unit="3"></span><span class="farm-fruit-unit" data-unit="4"></span><span class="farm-fruit-unit" data-unit="5"></span><span class="farm-fruit-unit" data-unit="6"></span><span class="farm-fruit-unit" data-unit="7"></span><span class="farm-fruit-unit" data-unit="8"></span><span class="farm-fruit-unit" data-unit="9"></span><span class="farm-fruit-unit" data-unit="10"></span></div>
+ <div class="farm-longterm"><span id="farmIcon" class="farm-figure" aria-hidden="true">🌰</span>
+ <div class="farm-copy"><div class="farm-name">さくらんぼ のうえん</div><div id="farmDetail" class="farm-detail">10もん クリアで そだつよ</div></div>
+ <div id="farmProgress" class="farm-progress" aria-label="農園の成長段階">0 / 10</div></div>
+</section>
 <div class="stage-guide" id="guide">① あおい たまを タップして、10を つくろう。</div>
 <div id="game"><div class="progress"><span id="progressLabel">1 / 10もん</span><div class="track"><div id="progressFill" class="fill"></div></div><span id="progressCount">🍒 0こ</span></div>
 <div class="problem-card"><div class="problem-head">さいしょの もんだいを いつも みよう</div><div class="problem" id="problem">8 ＋ 5 ＝ ？</div><div id="bridge" class="bridge"></div></div>
@@ -164,6 +188,15 @@ function updateFarmStatus(){
  $('farmIcon').textContent=p.icon;
  $('farmDetail').textContent=farmStage===10?'しゅっか かんりょう！ つぎの10もんで あたらしい木だよ。':p.name+' あと10もんで つぎへ！';
  $('farmProgress').textContent=farmStage+' / 10';
+}
+function updateFarmFruits(){
+ // 一つ答えが確定するたびに実が増える。誤答やヒントに減点はない。
+ const done=Math.min(10,Math.max(0,s.sessionResults.length));
+ $('farmTodayCount').textContent=done+' / 10';
+ $('farmTodayMessage').textContent=done===0?'10もんで みが いっぱい！':done===10?'🍒 みが いっぱい！ 10もん クリア！':done+'もん やったよ！ あと'+(10-done)+'もんで みが いっぱい！';
+ document.querySelectorAll('#farmTree [data-fruit]').forEach(el=>el.classList.toggle('grown',Number(el.dataset.fruit)<=done));
+ document.querySelectorAll('#farmFruitBar [data-unit]').forEach(el=>el.classList.toggle('grown',Number(el.dataset.unit)<=done));
+ $('farmFruitBar').setAttribute('aria-label','今日できた問題'+done+'問、全部で10問');
 }
 function growFarm(){
  farmStage=farmStage===10?1:farmStage+1;
@@ -272,13 +305,14 @@ function finishRemainder(value){
 }
 function render(){
  if(s.done)return;
+ updateFarmFruits();
  const a=s.q.a,b=s.q.b,n=need(),r=rest(),hasRemainder=(s.step>=2),win=(s.step===3);
  $('guide').textContent=GUIDES[s.mode];
  document.querySelectorAll('.mode-btn').forEach(x=>{const on=x.dataset.mode===s.mode;x.classList.toggle('active',on);x.setAttribute('aria-pressed',String(on))});
  $('dailyStart').classList.toggle('active',s.mode==='daily');
  $('progressLabel').textContent=`${s.index+1} / ${s.limit}もん`;
- $('progressCount').textContent=`🍒 ${s.index}こ`;
- $('progressFill').style.width=`${100*s.index/s.limit}%`;
+ $('progressCount').textContent=`🍒 ${s.sessionResults.length}こ`;
+ $('progressFill').style.width=`${100*s.sessionResults.length/s.limit}%`;
  $('problem').innerHTML=`<span class="a">${a}</span> ＋ <span class="b">${b}</span> ＝ ${win?sum():'？'}`;
  showStory();
  const bridge=$('bridge');
@@ -330,7 +364,7 @@ function render(){
  updateStats();
 }
 function advance(){s.index++;if(s.index>=s.limit){finishSession();return;}setQuestion();render();window.scrollTo({top:0,behavior:'auto'})}
-function finishSession(){if(s.done||s.sessionResults.length<s.limit)return;s.done=true;growFarm();$('game').classList.add('hidden');$('completion').classList.remove('hidden');$('completionTitle').textContent=`${s.limit}もん おわったよ！`;
+function finishSession(){if(s.done||s.sessionResults.length<s.limit)return;s.done=true;updateFarmFruits();growFarm();$('game').classList.add('hidden');$('completion').classList.remove('hidden');$('completionTitle').textContent=`${s.limit}もん おわったよ！`;
  const clean=s.sessionResults.filter(r=>r.clean).length;$('completionText').textContent=`ヒントなし・さいしょの こたえで できたのは ${clean} / ${s.limit}もん。がんばったね！`;
  let nextMode=STAGES.indexOf(s.mode)+1,eligible=STAGES.indexOf(s.mode)>=0&&s.mode!=='review'&&s.sessionResults.length>=5&&s.sessionResults.slice(-5).filter(r=>r.clean).length>=4&&nextMode<4;
  $('suggestBox').classList.toggle('hidden',!eligible);$('tryNextStage').classList.toggle('hidden',!eligible);
