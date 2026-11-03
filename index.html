@@ -45,7 +45,7 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 .pattern-cell.ten.revealed{background:#eaf8ed;border-color:#9dcfae;color:#257344}
 .pattern-cell.last{outline:3px solid #df9a5a;outline-offset:-3px}
 .pattern-cell:focus-visible{outline:3px solid #246ba9;outline-offset:2px}
-.pattern-message{min-height:42px;text-align:center;background:#f2f9f5;color:#376c54;padding:10px;border-radius:12px;font-weight:850;line-height:1.5}
+.pattern-message{position:sticky;top:4px;z-index:5;min-height:42px;text-align:center;background:#f2f9f5;color:#376c54;padding:10px;border:1px solid #cfe8d7;border-radius:12px;font-weight:850;line-height:1.5;margin:9px 0}
 .bead-explain{margin-top:13px;border:2px solid #f1d6df;background:#fffdfd;border-radius:16px;padding:12px}
 .bead-explain h3{font-size:17px;color:#96526c;margin:0 0 4px}
 .bead-note{font-size:13px;color:#6c7380;margin:4px 0 10px;line-height:1.5}
@@ -63,6 +63,8 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 .explain-slot{width:28px;height:28px;border:1.5px solid #dfd9d4;border-radius:7px;background:#fff;display:grid;place-items:center}
 .explain-slot .explain-dot{width:20px;height:20px;flex-basis:20px}
 .explain-extra{font-size:12px;font-weight:850;text-align:center;color:#356b94;margin:7px 0 1px}
+.explain-extra-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;max-width:145px;margin:7px auto 4px;border:2px dashed #a8cfea;border-radius:12px;background:#f2f9ff;padding:9px}
+.explain-extra-dots .explain-dot{width:20px;height:20px;flex:0 0 20px}
 .bead-compare-text{margin-top:10px;min-height:26px;text-align:center;color:#386e56;font-size:14px;font-weight:900;line-height:1.6}
 @media(max-width:420px){.bead-explain{padding:10px}.bead-example{padding:9px}.explain-dot{width:17px;height:17px;flex-basis:17px}}
 
@@ -72,7 +74,7 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 </style>
 </head>
 <body><main>
-<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v3.0</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
+<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v3.1</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
 <nav class="learning-tabs" role="tablist" aria-label="まなぶ ないよう">
 <button id="tabPractice" class="learning-tab active" type="button" role="tab" aria-selected="true" aria-controls="practiceView">🍒 10もん れんしゅう</button>
 <button id="tabPattern" class="learning-tab" type="button" role="tab" aria-selected="false" aria-controls="patternView">🔍 たしざんひょうの きまり</button>
@@ -102,8 +104,8 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 <section id="patternView" role="tabpanel" aria-labelledby="tabPattern" hidden>
 <div class="pattern-explorer" id="patternExplorer"><h2>🔍 たしざんひょうの きまり</h2>
 <p>1＋1 から 10＋10 まで！ 「？」を タップして きまりを みつけよう。</p>
+<div id="patternMessage" class="pattern-message" role="status" aria-live="polite">？を 1かい タップ！ こたえと あか・あおの かずが すぐに でるよ。</div>
 <div class="pattern-scroll" role="region" aria-label="1から10の足し算表。横にスクロールできます" tabindex="0"><div id="patternGrid" class="pattern-grid" aria-label="1から10の足し算表"></div></div>
-<div id="patternMessage" class="pattern-message" role="status" aria-live="polite">こたえが おなじ ばしょも さがしてみよう！</div>
 <section class="bead-explain" aria-labelledby="patternBeadHeading">
  <h3 id="patternBeadHeading">🔴🔵 あかだま・あおだまで みてみよう</h3>
  <p class="bead-note">ひょうの マスを 1つ おしてね。2つ つづけて おすと くらべられるよ。</p>
@@ -285,6 +287,7 @@ function finishSession(){s.done=true;$('game').classList.add('hidden');$('comple
 const patternShown=new Set();
 let lastPattern=null;
 let earlierPattern=null;
+let activePatternCell=null;
 function patternDots(count,color){
  return Array.from({length:count},()=>'<span class="explain-dot '+color+'" aria-hidden="true"></span>').join('');
 }
@@ -296,7 +299,9 @@ function patternFrame(a,b){
    slots+='<div class="explain-slot">'+(color?'<span class="explain-dot '+color+'" aria-hidden="true"></span>':'')+'</div>';
  }
  return '<div class="explain-ten-title">10の はこ（あか＋あお）</div><div class="explain-tenframe" aria-label="10の はこ。あか'+a+'こ、あお'+insideBlue+'こ、あき'+(10-a-insideBlue)+'こ">'+slots+'</div>'+
- (remaining?'<p class="explain-extra">はこの そとに あおが '+remaining+'こ。10 と '+remaining+' で '+(a+b)+'！</p>':'');
+ (remaining?'<div class="explain-ten-title">はこの そとに のこった あおだま</div>'+
+ '<div class="explain-extra-dots" role="img" aria-label="箱の外の青玉 '+remaining+'個">'+patternDots(remaining,'blue')+'</div>'+
+ '<p class="explain-extra">はこの そとに あおが '+remaining+'こ。10 と '+remaining+' で '+(a+b)+'！</p>':'');
 }
 function patternExample(q,label){
  const a=q.a,b=q.b;
@@ -349,17 +354,22 @@ function drawPatternTable(){
        if(a===10&&b===10)message+=' 10と10で 20！';
        earlierPattern=lastPattern;
        lastPattern={a,b};
+       // タップのたびに表を全再生成しない。選択位置・スクロール・タッチ状態を保つ。
+       if(activePatternCell&&activePatternCell!==cell)activePatternCell.classList.remove('last');
+       cell.textContent=String(a+b);
+       cell.classList.add('revealed','last');
+       cell.setAttribute('aria-label',a+' たす '+b+' は '+(a+b)+'。赤玉・青玉を みる');
+       activePatternCell=cell;
        $('patternMessage').textContent=message;
-       drawPatternTable();
        showPatternBeads();
      });
    }
  }
 }
 function resetPatternTable(){
- patternShown.clear();lastPattern=null;earlierPattern=null;
+ patternShown.clear();lastPattern=null;earlierPattern=null;activePatternCell=null;
  for(let i=1;i<=10;i++){patternShown.add('1-'+i);patternShown.add(i+'-1');}
- $('patternMessage').textContent='2＋3 と 3＋2、8＋2 と 8＋3 を くらべてみよう！';
+ $('patternMessage').textContent='？を 1かい タップ！ 2＋3 と 3＋2、8＋2 と 8＋3 を くらべよう。';
  drawPatternTable();
  showPatternBeads();
 }
