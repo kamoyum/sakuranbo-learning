@@ -25,7 +25,7 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 </style>
 </head>
 <body><main>
-<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
+<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v2.1</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
 <nav class="mode-nav" id="modeNav" aria-label="れんしゅうの だんかい">
 <button data-mode="beads" class="mode-btn active" aria-pressed="true"><span>🔴</span>① たま</button><button data-mode="picture" class="mode-btn" aria-pressed="false"><span>▦</span>② ず</button><button data-mode="bond" class="mode-btn" aria-pressed="false"><span>🍒</span>③ しき</button><button data-mode="mental" class="mode-btn" aria-pressed="false"><span>💡</span>④ じぶん</button><button data-mode="review" class="mode-btn" aria-pressed="false"><span>🌱</span>おさらい</button>
 </nav>
@@ -53,7 +53,7 @@ const rand=n=>Math.floor(Math.random()*n);
 function shuffled(arr){for(let i=arr.length-1;i>0;i--){let j=rand(i+1);[arr[i],arr[j]]=[arr[j],arr[i]];}return arr}
 function pool(){const p=[];for(let a=6;a<=9;a++)for(let b=11-a;b<=9;b++)p.push({a,b});return p}
 function newProblem(){if(s.mode==='review'&&s.reviewPool.length){let q=s.reviewPool.shift();return {a:q.a,b:q.b};}
- let candidates=pool().filter(p=>s.mode!=='beads'||p.a>=8).filter(p=>s.mode!=='picture'||p.a>=7);
+ let candidates=pool();
  let used=new Set(s.shown.slice(-7));let available=candidates.filter(p=>!used.has(`${p.a}+${p.b}`));if(!available.length)available=candidates;
  return {...available[rand(available.length)]};}
 function reviewQuestions(){const eligible=history.filter(r=>r.mode!=='review');const pairs=new Map();eligible.forEach(r=>{let k=`${r.a}+${r.b}`;const p=pairs.get(k)||{a:r.a,b:r.b,struggles:0,seen:0,last:r.date||''};p.seen++;if(!r.clean)p.struggles++;p.last=r.date||p.last;pairs.set(k,p)});
@@ -71,50 +71,93 @@ function markWrong(){s.wrong++;}
 function showTenFrame(a,moved=0,staticTray=false,active=false,numberEmpty=false){let html='<div class="frame" id="tenFrame" aria-label="10の はこ">';for(let i=0;i<10;i++){const kind=i<a?'red':i<a+moved?'blue':'open';html+=`<div class="cell ${kind==='open'?'open':''}" data-index="${i}" aria-label="${kind==='red'?'あかい たま':kind==='blue'?'あおい たま':'からの マス'}">${kind==='open'?(numberEmpty?`<span class="slotcount">${i-a+1}</span>`:''):`<span class="dot ${kind}"></span>`}</div>`;}html+='</div>';
  if(staticTray){html+='<div class="tray" aria-label="あおい たま">'+Array.from({length:s.q.b},()=>'<span class="dot blue" style="width:35px;height:35px;flex:0 0 35px"></span>').join('')+'</div>';}
  else if(active){html+='<div class="tray" id="blueTray" aria-label="あおい たま。1こ タップすると はこに うごく">'+Array.from({length:s.q.b-s.moved},()=>'<button class="ball" type="button" aria-label="あおい たまを 1こ うごかす"></button>').join('')+'</div>';}
- return html+'<div class="legend"><span><i></i>あか '+a+'こ</span><span><i class="blue"></i>あお '+(s.q.b-moved)+'こ</span></div>';
+ return html+'<div class="legend"><span><i></i>あか '+a+'こ</span><span><i class="blue"></i>あおい たま</span></div>';
 }
 function cherry(a,b,left,right){return `<div class="cherry" role="img" aria-label="${b}を ${left} と ${right} にわける"><svg viewBox="0 0 260 80" aria-hidden="true"><path d="M130 8 L67 69 M130 8 L193 69" stroke="#7ab78d" fill="none" stroke-linecap="round" stroke-width="5"/></svg><div class="root">${b}</div><div class="leaf left">${left}</div><div class="leaf right">${right}</div></div><div class="split-label"><span>10に する</span><span>のこり</span></div>`}
 function numberChoices(correct,kind){const c=new Set([correct]);const offsets=shuffled([-2,-1,1,2,3,-3]);for(const offset of offsets){const n=correct+offset;if(n>=1&&n<=19)c.add(n);if(c.size>=4)break;}
  return `<div class="choices">${Array.from(c).sort((a,b)=>a-b).map(n=>`<button type="button" class="choice" data-answer="${n}" data-kind="${kind}">${n}</button>`).join('')}</div>`}
 function actionsHelp(){return `<button class="secondary help" id="help" type="button">💡 ${s.hints===0?'ヒントを みる':'もうすこし ヒント'}</button>`}
-function finishAnswer(value){if(value===sum()) {const clean=s.wrong===0&&s.hints===0;const record={date:today(),mode:s.mode,a:s.q.a,b:s.q.b,clean,wrong:s.wrong,hints:s.hints};history.push(record);history=history.slice(-300);writeHistory();s.sessionResults.push(record);s.step=2;s.feedback='せいかい！ もとの しきも できたね！';s.feedbackError=false;render();}
+function finishAnswer(value){if(value===sum()) {const clean=s.wrong===0&&s.hints===0;const record={date:today(),mode:s.mode,a:s.q.a,b:s.q.b,clean,wrong:s.wrong,hints:s.hints};history.push(record);history=history.slice(-300);writeHistory();s.sessionResults.push(record);s.step=3;s.feedback='せいかい！ もとの しきも できたね！';s.feedbackError=false;render();}
  else {markWrong();say('ちがうみたい。10を つくる かんがえで もういちど。',true)}}
-function pickNumber(value,kind){if(s.step===2)return;if(kind==='need'&&s.step===0){if(value===need()){s.step=1;s.feedback='10に する かずが わかったね！';s.feedbackError=false;render();}else{markWrong();say('あと なんこで 10に なるかな？',true)}return;}if(kind==='sum'&&s.step===1)finishAnswer(value)}
-function move(){if(s.mode!=='beads'||s.step!==0||s.moved>=need())return;s.moved++;if(s.moved>=need()){s.step=1;s.feedback='10が できたね！ さくらんぼで たしかめよう。'}else{s.feedback='いいね！ あと なんこで 10かな？';}s.feedbackError=false;render();}
+function pickNumber(value,kind){
+ if(s.step===3)return;
+ if(kind==='need'&&s.step===0){
+   if(value===need()){s.step=1;s.typed='';s.feedback='10に する かずが わかったね！ こんどは のこりを かんがえよう。';s.feedbackError=false;render();}
+   else{markWrong();say('あと なんこで 10に なるかな？',true)}return;
+ }
+ if(kind==='sum'&&s.step===2)finishAnswer(value);
+}
+function move(){if(s.mode!=='beads'||s.step!==0||s.moved>=need())return;s.moved++;if(s.moved>=need()){s.step=1;s.typed='';s.feedback='10が できたね！ のこりの かずを かんがえよう。'}else{s.feedback='いいね！ あと なんこで 10かな？';}s.feedbackError=false;render();}
 function dragSetup(){document.querySelectorAll('#blueTray .ball').forEach(btn=>{let gesture=null;const cleanup=()=>{if(!gesture)return;gesture.ghost?.remove();gesture=null;btn.classList.remove('dragging');document.querySelectorAll('.cell.hot').forEach(e=>e.classList.remove('hot'))};
 btn.addEventListener('pointerdown',e=>{if(e.button!==0)return;gesture={id:e.pointerId,x:e.clientX,y:e.clientY,drag:false,ghost:null};btn.setPointerCapture?.(e.pointerId)});
 btn.addEventListener('pointermove',e=>{if(!gesture||gesture.id!==e.pointerId)return;if(!gesture.drag&&Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>12){gesture.drag=true;gesture.ghost=document.createElement('div');gesture.ghost.className='ghost';document.body.append(gesture.ghost);btn.classList.add('dragging')}if(gesture.drag){e.preventDefault();gesture.ghost.style.left=e.clientX+'px';gesture.ghost.style.top=e.clientY+'px';document.querySelectorAll('.cell.hot').forEach(t=>t.classList.remove('hot'));document.elementFromPoint(e.clientX,e.clientY)?.closest('#tenFrame .cell.open')?.classList.add('hot')}});
 btn.addEventListener('pointerup',e=>{if(!gesture||gesture.id!==e.pointerId)return;const dragged=gesture.drag;const target=document.elementFromPoint(e.clientX,e.clientY)?.closest('#tenFrame .cell.open');cleanup();btn.dataset.handled='1';if(!dragged||target)move();else say('はこの あいている ところに いれてね。',true)});
 btn.addEventListener('pointercancel',cleanup);btn.addEventListener('click',e=>{if(btn.dataset.handled==='1'){btn.dataset.handled='';return;}if(e.detail===0)move()});});}
-function answerKeypad(){const keys=['1','2','3','4','5','6','7','8','9','けす','0','ぜんぶけす'];return `<div class="typed" id="typed">${s.typed||'？'}</div><div class="keypad">${keys.map(x=>`<button type="button" data-key="${x}" ${x.length>1?'class="del"':''}>${x}</button>`).join('')}</div><button type="button" class="primary" id="submit" ${s.typed.length===0?'disabled':''}>こたえる！</button>`}
-function render(){if(s.done)return;const a=s.q.a,b=s.q.b,n=need(),r=rest();$('guide').textContent=GUIDES[s.mode];document.querySelectorAll('.mode-btn').forEach(x=>{const on=x.dataset.mode===s.mode;x.classList.toggle('active',on);x.setAttribute('aria-pressed',String(on))});$('progressLabel').textContent=`${s.index+1} / ${s.limit}もん`;$('progressCount').textContent=`🍒 ${s.index}こ`;$('progressFill').style.width=`${100*s.index/s.limit}%`;
- $('problem').innerHTML=`<span class="a">${a}</span> ＋ <span class="b">${b}</span> ＝ ${s.step===2?sum():'？'}`;
- const bridge=$('bridge');bridge.textContent=s.step===0?'':`${a} ＋ (${n} ＋ ${r}) ＝ 10 ＋ ${r}${s.step===2?' ＝ '+sum():''}`;
- let left='',right='',question='';
- if(s.step===2){left=`<h2>🌸 せいかい！</h2>${cherry(a,b,n,r)}<div class="strategy">${a} ＋ (${n} ＋ ${r}) ＝ 10 ＋ ${r}</div>`;right=`<div class="success">やったね！</div><div class="result">${a} ＋ ${b} ＝ ${sum()}</div><p>玉も、ずも、しきも、おなじ たしざんだね。</p>`;question=`<button id="next" class="primary" type="button">${s.index+1===s.limit?'🎉 ゴールへ！':'つぎの もんだいへ ➜'}</button>`;}
- else if(s.mode==='beads'){
- left=`<h2>10の はこ</h2><p>あおい たまを 1かい タップしてね。ドラッグも OK！</p>${showTenFrame(a,s.moved,false,s.step===0)}`;
- right=`<h2>🍒 さくらんぼ</h2>${cherry(a,b,s.moved?s.moved:'？',s.moved?b-s.moved:'？')}<div class="strategy">${s.step===0?`10を つくろう`:`${b} ＝ ${n} ＋ ${r}`}</div>`;
- question=s.step===0?`<h2>あおい たまを うごかそう！</h2><p>10に なったら こたえを えらべるよ。</p>`:`<h2>${a} ＋ ${b} は いくつ？</h2><p>10 ＋ ${r} に した こたえを えらぼう</p>${numberChoices(sum(),'sum')}`;
- }else if(s.mode==='picture'){
- left=`<h2>10の はこの ず</h2><p>あおい たまは うごかさず、あたまの なかで かんがえよう。</p>${showTenFrame(a,s.step===1?n:0,s.step===0,false,s.hints>0&&s.step===0)}`;
- right=`<h2>🍒 さくらんぼ</h2>${cherry(a,b,s.step===1?n:'？',s.step===1?r:'？')}<div class="strategy">${s.step===1?`${b} ＝ ${n} ＋ ${r}`:'ずを みて かんがえよう'}</div>`;
- question=s.step===0?`<h2>10に するには あと なんこ？</h2>${numberChoices(n,'need')}${actionsHelp()}`:`<h2>もとの ${a} ＋ ${b} は いくつ？</h2><p>10 ＋ ${r} を かんがえよう</p>${numberChoices(sum(),'sum')}${actionsHelp()}`;
- }else if(s.mode==='bond'){
- left=`<h2>🍒 さくらんぼの しき</h2>${cherry(a,b,s.step===1?n:'？',s.step===1?r:'？')}<div class="strategy">${s.step===1?`${a} ＋ (${n} ＋ ${r}) ＝ 10 ＋ ${r}`:`${b} を ふたつに わけよう`}</div>`;
- right=`<h2>あたまの なかで 10を つくる</h2><p>たまの ずは かくれて いるよ。</p>${s.hints?showTenFrame(a,0,false,false):'<p class="small-note">こまったら「ヒントを みる」で ずを みられるよ。</p>'}`;
- question=s.step===0?`<h2>${b} を わけて 10に する かずは？</h2>${numberChoices(n,'need')}${actionsHelp()}`:`<h2>${a} ＋ ${b} は いくつ？</h2><p>10 ＋ ${r} で かんがえよう</p>${numberChoices(sum(),'sum')}${actionsHelp()}`;
+function answerKeypad(label='こたえる！'){
+ const keys=['1','2','3','4','5','6','7','8','9','けす','0','ぜんぶけす'];
+ return `<div class="typed" id="typed" aria-live="polite">${s.typed||'？'}</div><div class="keypad">${keys.map(x=>`<button type="button" data-key="${x}" ${x.length>1?'class="del"':''}>${x}</button>`).join('')}</div><button type="button" class="primary" id="submit" ${s.typed.length===0?'disabled':''}>${label}</button>`;
+}
+function finishRemainder(value){
+ if(value===rest()){
+   s.step=2;s.typed='';s.feedback='さくらんぼが できたね！ もとの たしざんに こたえよう。';s.feedbackError=false;render();
  }else{
- left=`<h2>じぶんで けいさん</h2><p>はじめは ずを かくして いるよ。こまったら ヒントを つかって OK。</p>${s.hints>=1?`<h2>ヒント ${s.hints>=2?'②':'①'}</h2>${showTenFrame(a,0,false,false)}`:'<div style="font-size:64px;text-align:center;margin:10px 0" aria-hidden="true">🧠</div>'}${s.hints>=2?`<div class="strategy">${cherry(a,b,n,r)}${a} ＋ (${n} ＋ ${r}) ＝ 10 ＋ ${r}</div>`:''}`;
- right=`<h2>こたえを おしてね</h2>${answerKeypad()}`;
- question=`<p>まちがえても だいじょうぶ。じぶんで かんがえるのが たいせつ。</p>${s.hints<2?actionsHelp():''}`;
+   markWrong();s.typed='';say('もういちど。もとの かずから 10に つかった かずを ひいてみよう。',true);
+ }
+}
+function render(){
+ if(s.done)return;
+ const a=s.q.a,b=s.q.b,n=need(),r=rest(),hasRemainder=(s.step>=2),win=(s.step===3);
+ $('guide').textContent=GUIDES[s.mode];
+ document.querySelectorAll('.mode-btn').forEach(x=>{const on=x.dataset.mode===s.mode;x.classList.toggle('active',on);x.setAttribute('aria-pressed',String(on))});
+ $('progressLabel').textContent=`${s.index+1} / ${s.limit}もん`;
+ $('progressCount').textContent=`🍒 ${s.index}こ`;
+ $('progressFill').style.width=`${100*s.index/s.limit}%`;
+ $('problem').innerHTML=`<span class="a">${a}</span> ＋ <span class="b">${b}</span> ＝ ${win?sum():'？'}`;
+ const bridge=$('bridge');
+ bridge.textContent=(s.mode==='mental'||s.mode==='review')&&!win?'':s.step===1?`${a} ＋ (${n} ＋ □) ＝ ？`:hasRemainder?`${a} ＋ (${n} ＋ ${r}) ＝ 10 ＋ ${r}${win?' ＝ '+sum():''}`:'';
+ let left='',right='',question='';
+ if(win){
+   left=`<h2>🌸 せいかい！</h2>${cherry(a,b,n,r)}<div class="strategy">${a} ＋ (${n} ＋ ${r}) ＝ 10 ＋ ${r}</div>`;
+   right=`<div class="success">やったね！</div><div class="result">${a} ＋ ${b} ＝ ${sum()}</div><p>玉も、ずも、しきも、おなじ たしざんだね。</p>`;
+   question=`<button id="next" class="primary" type="button">${s.index+1===s.limit?'🎉 ゴールへ！':'つぎの もんだいへ ➜'}</button>`;
+ }else if(s.mode==='beads'){
+   left=`<h2>10の はこ</h2><p>${s.step===0?'あおい たまを 1かい タップしてね。ドラッグも OK！':'10が できたね。 のこりの あおい たまは かくしたよ。'}</p>${showTenFrame(a,s.moved,false,s.step===0)}`;
+   const showLeft=s.moved>0||s.step>0;
+   right=`<h2>🍒 さくらんぼ</h2>${cherry(a,b,showLeft?s.moved:'？',hasRemainder?r:'？')}<div class="strategy">${s.step===0?'10を つくろう':hasRemainder?`${b} ＝ ${n} ＋ ${r}`:`${b} ＝ ${n} ＋ □`}</div>`;
+   question=s.step===0?`<h2>あおい たまを うごかそう！</h2><p>10に したら のこりの かずを かんがえよう。</p>`:
+     s.step===1?`<h2>${b} を ${n} と なんこに わけた？</h2><p>10に つかわなかった かずを かんがえてね。</p>${answerKeypad('のこりの かずを こたえる')}${actionsHelp()}`:
+     `<h2>${a} ＋ ${b} は いくつ？</h2><p>10 ＋ ${r} に した こたえを えらぼう</p>${numberChoices(sum(),'sum')}`;
+ }else if(s.mode==='picture'){
+   left=`<h2>10の はこの ず</h2><p>あおい たまは うごかさず、あたまの なかで かんがえよう。</p>${showTenFrame(a,s.step>0?n:0,s.step===0,false,s.hints>0&&s.step===0)}`;
+   right=`<h2>🍒 さくらんぼ</h2>${cherry(a,b,s.step>=1?n:'？',hasRemainder?r:'？')}<div class="strategy">${hasRemainder?`${b} ＝ ${n} ＋ ${r}`:s.step===1?`${b} ＝ ${n} ＋ □`:'ずを みて かんがえよう'}</div>`;
+   question=s.step===0?`<h2>10に するには あと なんこ？</h2>${numberChoices(n,'need')}${actionsHelp()}`:
+     s.step===1?`<h2>${b} ＝ ${n} ＋ □</h2><p>□に はいる かずは？</p>${answerKeypad('のこりの かずを こたえる')}${actionsHelp()}`:
+     `<h2>もとの ${a} ＋ ${b} は いくつ？</h2><p>10 ＋ ${r} を かんがえよう</p>${numberChoices(sum(),'sum')}${actionsHelp()}`;
+ }else if(s.mode==='bond'){
+   left=`<h2>🍒 さくらんぼの しき</h2>${cherry(a,b,s.step>=1?n:'？',hasRemainder?r:'？')}<div class="strategy">${hasRemainder?`${a} ＋ (${n} ＋ ${r}) ＝ 10 ＋ ${r}`:s.step===1?`${b} ＝ ${n} ＋ □`:`${b} を ふたつに わけよう`}</div>`;
+   right=`<h2>あたまの なかで 10を つくる</h2><p>たまの ずは かくれて いるよ。</p>${s.hints?showTenFrame(a,0,false,false):'<p class="small-note">こまったら「ヒントを みる」で ずを みられるよ。</p>'}`;
+   question=s.step===0?`<h2>${b} を わけて 10に する かずは？</h2>${numberChoices(n,'need')}${actionsHelp()}`:
+     s.step===1?`<h2>${b} ＝ ${n} ＋ □</h2><p>□に はいる かずは？</p>${answerKeypad('のこりの かずを こたえる')}${actionsHelp()}`:
+     `<h2>${a} ＋ ${b} は いくつ？</h2><p>10 ＋ ${r} で かんがえよう</p>${numberChoices(sum(),'sum')}${actionsHelp()}`;
+ }else{
+   // Mental and review intentionally require only the final answer; reveal decomposition solely on request for a hint.
+   left=`<h2>じぶんで けいさん</h2><p>はじめは ずを かくして いるよ。こまったら ヒントを つかって OK。</p>${s.hints>=1?`<h2>ヒント ${s.hints>=2?'②':'①'}</h2>${showTenFrame(a,0,false,false)}`:'<div style="font-size:64px;text-align:center;margin:10px 0" aria-hidden="true">🧠</div>'}${s.hints>=2?`<div class="strategy">${cherry(a,b,n,'？')}${b} ＝ ${n} ＋ □</div>`:''}`;
+   right=`<h2>こたえを おしてね</h2>${answerKeypad()}`;
+   question=`<p>まちがえても だいじょうぶ。じぶんで かんがえるのが たいせつ。</p>${s.hints<2?actionsHelp():''}`;
  }
  $('leftPanel').innerHTML=left;$('rightPanel').innerHTML=right;$('questionPanel').innerHTML=question+`<div class="feedback ${s.feedbackError?'error':''}" id="feedback" role="status" aria-live="polite">${s.feedback}</div>`;
  document.querySelectorAll('.choice').forEach(el=>el.addEventListener('click',()=>pickNumber(Number(el.dataset.answer),el.dataset.kind)));
  if(s.mode==='beads'&&s.step===0)dragSetup();
  document.querySelectorAll('[data-key]').forEach(el=>el.addEventListener('click',()=>{const k=el.dataset.key;if(k==='けす')s.typed=s.typed.slice(0,-1);else if(k==='ぜんぶけす')s.typed='';else if(s.typed.length<2)s.typed+=k;s.feedback='';render()}));
- $('submit')?.addEventListener('click',()=>{if(s.typed)finishAnswer(Number(s.typed))});
- $('help')?.addEventListener('click',()=>{s.hints++;if(s.mode==='picture'){s.feedback='あいている マスに、1、2、と かずを つけたよ。';}else if(s.mode==='bond'){s.feedback='はこの あいている ところを かぞえよう。';}else{s.feedback=s.hints===1?'ずを みて 10まで あと いくつか かんがえてね。':'さくらんぼで 10に する かずを みてね。';}s.feedbackError=false;render()});
+ $('submit')?.addEventListener('click',()=>{if(s.typed){if((s.mode==='mental'||s.mode==='review'))finishAnswer(Number(s.typed));else if(s.step===1)finishRemainder(Number(s.typed));}});
+ $('help')?.addEventListener('click',()=>{
+   s.hints++;
+   if(s.step===1){s.feedback='ヒント：'+b+'こ あるうち、'+n+'こを 10に つかったよ。 のこりは いくつ？';}
+   else if(s.mode==='picture'){s.feedback='あいている マスを かぞえてみよう。';}
+   else if(s.mode==='bond'){s.feedback='はこの あいている ところを かぞえよう。';}
+   else{s.feedback=s.hints===1?'ずを みて 10まで あと いくつか かんがえてね。':'さくらんぼの □ を かんがえてね。';}
+   s.feedbackError=false;render();
+ });
  $('next')?.addEventListener('click',advance);
  updateStats();
 }
