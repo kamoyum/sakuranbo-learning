@@ -20,6 +20,7 @@ main{max-width:960px;padding:14px 14px 48px;margin:auto}.top{display:flex;align-
 .keypad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:335px;gap:8px;margin:10px auto}.keypad button{min-height:53px;background:#fff;border:2px solid #d9dce2;border-radius:13px;font-size:24px;font-weight:950;color:#465f75}.keypad .del{font-size:17px;color:#8b5b68}.typed{font-size:34px;font-weight:1000;letter-spacing:.1em;color:#93516b;min-height:50px;text-align:center;border-bottom:3px solid #e3cdd2;margin:4px auto 8px;max-width:170px}.completion{text-align:center;padding:28px 14px;background:white;border:1.5px solid #f0d7da;border-radius:21px}.completion h2{font-size:29px;color:#ad5669}.suggest{padding:12px;background:#ecf8ef;color:#387b59;border-radius:13px;font-weight:850;line-height:1.6;margin:12px 0}.small-note{color:#7b808a;font-size:12px;line-height:1.6;margin-top:9px}
 .stage-chooser{margin:0 0 10px;padding:9px 12px;background:#fffdfb;border:1px solid #e6d8d6;border-radius:13px}.stage-chooser summary{cursor:pointer;font-weight:900;color:#805b6e;min-height:35px;display:list-item;align-content:center}.stage-chooser .stage-hint{font-size:12px;color:#6c7782;margin:9px 0 8px}.stage-chooser .mode-nav{margin-bottom:1px}
 .practice-hub{border:2px solid #f2d9cb;background:linear-gradient(120deg,#fffefa,#fef0e9);border-radius:19px;padding:13px;margin-bottom:11px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px}.practice-hub h2{font-size:18px;margin:0 0 3px;color:#a04663}.practice-hub p{font-size:12px;margin:3px 0;color:#716c78;line-height:1.5}.practice-actions{display:flex;align-items:center;justify-content:center;min-width:235px}.practice-launch{border:2px solid #b9dcd5;background:#edfbf6;color:#26735f;min-height:56px;border-radius:13px;padding:9px 14px;font-size:17px;font-weight:900;width:100%}.practice-launch.active{box-shadow:inset 0 0 0 2px #376f5b}.today-summary{font-size:12px;font-weight:800;color:#637378;grid-column:1/-1;border-top:1px solid #f0ded8;padding-top:9px}.weekly{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin:6px 0}.weekly-day{text-align:center;background:#f8f3ee;border-radius:9px;padding:6px 2px;font-size:11px;color:#776977}.weekly-day strong{display:block;font-size:16px;color:#95566c}.weekly-day.current{background:#edf8ee;color:#346f54}.practice-parents{padding:9px;background:#f9f5f0;border-radius:12px;font-size:12px;color:#776f73}
+.story-problem{background:#fff8e8;border:2px solid #eed9a7;color:#795439;border-radius:14px;padding:11px 13px;margin:-3px 0 12px;font-size:clamp(14px,2.5vw,17px);font-weight:850;line-height:1.65}.story-problem .story-label{font-size:12px;color:#a27633;display:block;font-weight:900;margin-bottom:2px}.strategy-tip{margin:10px 0;padding:10px 12px;background:#eff7ff;border:1px solid #c6dff0;border-radius:12px;font-size:15px;font-weight:800;color:#336b8e;line-height:1.65}.strategy-tip small{display:block;font-size:12px;color:#567b93;margin-bottom:3px}
 details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-top:14px;padding:12px 14px;color:#6a747e;font-size:13px;line-height:1.65}details summary{font-size:15px;font-weight:900;cursor:pointer;color:#805b6e}.parent-stats{display:grid;gap:5px;margin-top:9px}.stats-row{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:#f9f4f1;border-radius:9px}.tiny{font-size:12px}.actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:13px}
 @media(max-width:720px){.practice-hub{grid-template-columns:1fr}.practice-actions{justify-content:stretch}.practice-launch{flex:1}.play{display:block}.panel{padding:13px}.mode-nav{gap:5px}.mode-btn{min-height:59px;border-radius:11px}.stage-guide{font-size:13px;padding:9px 11px}.problem-head{font-size:11px}.problem-card{padding:6px 8px}.panel h2{font-size:18px}.frame{max-width:420px}.cherry{height:145px}.leaf{top:82px}.top .small-btn{font-size:12px}}
 @media(max-width:530px){.practice-hub{padding:10px}.practice-actions{display:flex;min-width:0}.practice-launch{width:100%;font-size:16px;line-height:1.35;word-break:keep-all}}@media(max-width:370px){.practice-hub{padding:9px}.practice-launch{font-size:14px;padding:9px 7px}.practice-actions{gap:5px}main{padding:9px 8px 25px}.mode-btn{font-size:10px;padding:4px 0;min-height:52px}.mode-btn span{font-size:17px}.cell{border-radius:6px}.frame{gap:4px;padding:5px}.choices{gap:5px}.choice{min-height:56px}.ball{width:43px;height:43px;min-width:43px}.panel{border-radius:15px}}
@@ -27,7 +28,7 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 </style>
 </head>
 <body><main>
-<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v2.3</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
+<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v2.4</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
 <section class="practice-hub" aria-label="まいにちの けいさんれんしゅう">
 <div><h2>🌱 まいにち 10もん</h2><p>1かい 10もん。じぶんで かんがえて、むずかしかったら ヒントを みよう。</p></div>
 <div class="practice-actions"><button type="button" id="dailyStart" class="practice-launch">🎯 きょうの10もんを はじめる</button></div>
@@ -41,10 +42,11 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 <div class="stage-guide" id="guide">① あおい たまを タップして、10を つくろう。</div>
 <div id="game"><div class="progress"><span id="progressLabel">1 / 10もん</span><div class="track"><div id="progressFill" class="fill"></div></div><span id="progressCount">🍒 0こ</span></div>
 <div class="problem-card"><div class="problem-head">さいしょの もんだいを いつも みよう</div><div class="problem" id="problem">8 ＋ 5 ＝ ？</div><div id="bridge" class="bridge"></div></div>
+<div id="storyProblem" class="story-problem hidden"></div>
 <div class="play"><section id="leftPanel" class="panel"></section><section class="panel" id="rightPanel"></section></div>
 <div class="panel question" id="questionPanel"></div></div>
 <div class="completion hidden" id="completion"><div style="font-size:54px">🎉🍒🎉</div><h2 id="completionTitle">10もん クリア！</h2><p id="completionText"></p><div id="suggestBox" class="suggest hidden"></div><button id="repeat" class="primary" type="button">もう いっかい</button><div class="actions"><button type="button" id="tryNextStage" class="secondary hidden">つぎの だんかいを ためす</button></div><p class="small-note">「つぎへ」は練習の提案だよ。できる・できないを決めるテストではないよ。</p></div>
-<details id="parentPanel"><summary>おうちの ひとへ｜練習記録と使い方</summary><p>①玉を動かす → ②図を見て想像する → ③さくらんぼ式で考える → ④図なしで答える、の順に支援を減らします。どの段階にも戻れます。おさらいは前に間違えたりヒントを使った問題を優先し、まず自力で考えます。「きょうの10もん」は和を数字で入力し、苦手問題・初めての問題を織り交ぜます。</p><div class="practice-parents"><strong>まいにちの おさらい</strong><div id="weeklyStats" class="weekly"></div><p>記録はこの端末の直近300問分を集計します。きょうの10もんには、前に間違えた問題や初めての問題も混ぜます。時間の速さは評価しません。</p></div><div id="parentStats" class="parent-stats"></div><p>各段階で「直近5問のうち4問を初回正解・ヒントなし」で次の段階を試す提案が出ます。これはアプリ独自の練習上の目安で、教育研究で確立された合格基準ではありません。理解の確認には、日を空けた復習や紙の問題も役立ちます。</p><p>記録はこの端末のブラウザ内だけに最大300問まで保存します。氏名や外部サービスへの学習情報の送信機能はありません。ブラウザのデータ消去・別端末では消失します。GitHub Pagesへの通常のアクセス通信は別です。</p><button type="button" id="clearStats" class="small-btn">この端末の学習記録を消す</button><span id="storageStatus" class="tiny"></span></details>
+<details id="parentPanel"><summary>おうちの ひとへ｜練習記録と使い方</summary><p>①玉を動かす → ②図を見て想像する → ③さくらんぼ式で考える → ④図なしで答える、の順に支援を減らします。どの段階にも戻れます。おさらいは前に間違えたりヒントを使った問題を優先し、まず自力で考えます。「きょうの10もん」は式を見て自力で解き、必要なときだけヒントを使います。前の日の苦手問題や初めての問題を混ぜ、ときどき短い文章題と別の計算方法を紹介します。</p><div class="practice-parents"><strong>まいにちの おさらい</strong><div id="weeklyStats" class="weekly"></div><p>記録はこの端末の直近300問分を集計します。きょうの10もんには、前の日の苦手問題や初めての問題を混ぜ、ときどき文章題も出します。時間の速さは評価しません。</p></div><div id="parentStats" class="parent-stats"></div><p>各段階で「直近5問のうち4問を初回正解・ヒントなし」で次の段階を試す提案が出ます。これはアプリ独自の練習上の目安で、教育研究で確立された合格基準ではありません。理解の確認には、日を空けた復習や紙の問題も役立ちます。</p><p>記録はこの端末のブラウザ内だけに最大300問まで保存します。氏名や外部サービスへの学習情報の送信機能はありません。ブラウザのデータ消去・別端末では消失します。GitHub Pagesへの通常のアクセス通信は別です。</p><button type="button" id="clearStats" class="small-btn">この端末の学習記録を消す</button><span id="storageStatus" class="tiny"></span></details>
 <p class="small-note">※無料の試作教材です。学習効果は未検証。最初は大人と一緒に試し、お子さんが戸惑うところを確認してください。</p>
 </main>
 <script>
@@ -69,17 +71,18 @@ function newProblem(){if(s.plan.length){const q=s.plan.shift();return {a:q.a,b:q
 // 練習問題は同じセット内では重複しない（最大26通り）。
 // 苦手・未経験・以前解いた問題を混ぜる。特定の日数での「習得判定」はしない。
 function mixedPracticeQuestions(count,daily=false){
- const all=shuffled(pool());const byPair=new Map();
- for(const h of history){const key=`${h.a}+${h.b}`,p=byPair.get(key)||{tries:0,last:'',struggle:false};p.tries++;p.last=h.date;p.struggle=!h.clean;byPair.set(key,p)}
- const struggling=shuffled(all.filter(q=>byPair.get(`${q.a}+${q.b}`)?.struggle));
- const unseen=shuffled(all.filter(q=>!byPair.has(`${q.a}+${q.b}`)));
- const older=shuffled(all.filter(q=>byPair.has(`${q.a}+${q.b}`)&&byPair.get(`${q.a}+${q.b}`).last<today()));
+ const all=shuffled(pool()), latest=new Map();
+ // 同じ問題の最新の記録を使用。別の日の苦手・未経験問題を先に取り上げる。
+ for(const h of history){latest.set(`${h.a}+${h.b}`,{date:h.date,clean:h.clean});}
+ const oldNeeds=shuffled(all.filter(q=>{const h=latest.get(`${q.a}+${q.b}`);return h&&h.date<today()&&!h.clean}));
+ const unseen=shuffled(all.filter(q=>!latest.has(`${q.a}+${q.b}`)));
+ const oldOther=shuffled(all.filter(q=>{const h=latest.get(`${q.a}+${q.b}`);return h&&h.date<today()&&h.clean}));
+ const todayNeeds=shuffled(all.filter(q=>{const h=latest.get(`${q.a}+${q.b}`);return h&&h.date>=today()&&!h.clean}));
  const selected=[],seen=new Set();
  const take=(xs,max)=>{for(const q of xs){if(selected.length>=max)break;const k=`${q.a}+${q.b}`;if(!seen.has(k)){selected.push({a:q.a,b:q.b});seen.add(k)}}};
- if(daily){take(struggling,Math.ceil(count*.4));take(unseen,Math.ceil(count*.8));take(older,count)}
- else {take(struggling,Math.ceil(count*.3));take(unseen,Math.ceil(count*.65));}
- take(all,count);
- return shuffled(selected).slice(0,count);
+ if(daily){take(oldNeeds,Math.min(3,count));take(unseen,Math.ceil(count*.7));take(oldOther,Math.max(count-1,0));take(todayNeeds,count);}
+ else {take(oldNeeds,Math.min(3,count));take(unseen,Math.ceil(count*.7));take(todayNeeds,count);}
+ take(all,count);return shuffled(selected).slice(0,count);
 }
 function reviewQuestions(){const eligible=history.filter(r=>r.mode!=='review');const pairs=new Map();eligible.forEach(r=>{let k=`${r.a}+${r.b}`;const p=pairs.get(k)||{a:r.a,b:r.b,struggles:0,seen:0,last:r.date||''};p.seen++;if(!r.clean)p.struggles++;p.last=r.date||p.last;pairs.set(k,p)});
  const prior=Array.from(pairs.values()).filter(r=>r.last<today()).sort((a,b)=>b.struggles-a.struggles||a.last.localeCompare(b.last));
@@ -91,6 +94,22 @@ function writeHistory(){if(!storageOk)return;try{localStorage.setItem(KEY,JSON.s
 function start(mode=s.mode){s.mode=mode;s.index=0;s.limit=10;s.shown=[];s.done=false;s.sessionResults=[];s.reviewPool=mode==='review'?reviewQuestions():[];s.plan=mode==='daily'?mixedPracticeQuestions(10,true):[];setQuestion();$('completion').classList.add('hidden');$('game').classList.remove('hidden');render();window.scrollTo({top:0,behavior:'auto'});}
 function setQuestion(){s.q=newProblem();s.shown.push(`${s.q.a}+${s.q.b}`);s.step=0;s.moved=0;s.wrong=0;s.hints=0;s.typed='';s.feedback='';s.feedbackError=false;}
 const need=()=>10-s.q.a;const rest=()=>s.q.b-need();const sum=()=>s.q.a+s.q.b;
+function showStory(){
+ // 10問中2問だけ。文章と式を対応させる（式を自分で作るテストではない）。
+ const show=s.mode==='daily'&&(s.index===2||s.index===7);
+ const box=$('storyProblem');box.classList.toggle('hidden',!show);
+ if(show){const {a,b}=s.q;const story=s.index===2?`あかい ふうせんが ${a}こ、あおい ふうせんが ${b}こ。ぜんぶで なんこ？`:`あめが ${a}こ あります。さらに ${b}こ もらうと、ぜんぶで なんこ？`;box.innerHTML=`<span class="story-label">📖 おはなしの もんだい</span>${story}`;}
+}
+function anotherWay(){
+ // 別解は正解後にだけ、10問中2回程度。押すボタンを増やさない。
+ if(s.mode!=='daily'||![3,8].includes(s.index))return '';
+ const {a,b}=s.q,total=sum();let tip='';
+ if(Math.abs(a-b)===1){const smaller=Math.min(a,b);tip=`${smaller} ＋ ${smaller} ＝ ${smaller*2}。あと 1で ${total}！`;}
+ else if(a<b){const toTen=10-b;tip=`${b} ＋ ${a} に いれかえると、${b} ＋ ${toTen} ＋ ${a-toTen} ＝ ${total}！`;}
+ else if(a===b){tip=`${a} と ${b} は おなじ かず。${a} ＋ ${a} ＝ ${total}！`;}
+ else {tip=`${b} ＋ ${a} に いれかえても、こたえは ${total}！`;}
+ return `<div class="strategy-tip"><small>💡 こんな かんがえも あるよ（あとで みるだけで OK）</small>${tip}</div>`;
+}
 function say(t,error=false){s.feedback=t;s.feedbackError=error;render()}
 function markWrong(){s.wrong++;}
 function showTenFrame(a,moved=0,staticTray=false,active=false,numberEmpty=false){let html='<div class="frame" id="tenFrame" aria-label="10の はこ">';for(let i=0;i<10;i++){const kind=i<a?'red':i<a+moved?'blue':'open';html+=`<div class="cell ${kind==='open'?'open':''}" data-index="${i}" aria-label="${kind==='red'?'あかい たま':kind==='blue'?'あおい たま':'からの マス'}">${kind==='open'?(numberEmpty?`<span class="slotcount">${i-a+1}</span>`:''):`<span class="dot ${kind}"></span>`}</div>`;}html+='</div>';
@@ -139,12 +158,13 @@ function render(){
  $('progressCount').textContent=`🍒 ${s.index}こ`;
  $('progressFill').style.width=`${100*s.index/s.limit}%`;
  $('problem').innerHTML=`<span class="a">${a}</span> ＋ <span class="b">${b}</span> ＝ ${win?sum():'？'}`;
+ showStory();
  const bridge=$('bridge');
  bridge.textContent=(['mental','review','daily','drill'].includes(s.mode))&&!win?'':s.step===1?`${a} ＋ (${n} ＋ □) ＝ ？`:hasRemainder?`${a} ＋ (${n} ＋ ${r}) ＝ 10 ＋ ${r}${win?' ＝ '+sum():''}`:'';
  let left='',right='',question='';
  if(win){
    left=`<h2>🌸 せいかい！</h2>${cherry(a,b,n,r)}<div class="strategy">${a} ＋ (${n} ＋ ${r}) ＝ 10 ＋ ${r}</div>`;
-   right=`<div class="success">やったね！</div><div class="result">${a} ＋ ${b} ＝ ${sum()}</div><p>玉も、ずも、しきも、おなじ たしざんだね。</p>`;
+   right=`<div class="success">やったね！</div><div class="result">${a} ＋ ${b} ＝ ${sum()}</div><p>玉も、ずも、しきも、おなじ たしざんだね。</p>${anotherWay()}`;
    question=`<button id="next" class="primary" type="button">${s.index+1===s.limit?'🎉 ゴールへ！':'つぎの もんだいへ ➜'}</button>`;
  }else if(s.mode==='beads'){
    left=`<h2>10の はこ</h2><p>${s.step===0?'あおい たまを 1かい タップしてね。ドラッグも OK！':'10が できたね。 のこりの あおい たまは かくしたよ。'}</p>${showTenFrame(a,s.moved,false,s.step===0)}`;
