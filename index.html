@@ -40,12 +40,18 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 </style>
 </head>
 <body><main>
-<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v2.5</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
+<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v2.6</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
 <section class="practice-hub" aria-label="まいにちの けいさんれんしゅう">
 <div><h2>🌱 まいにち 10もん</h2><p>1かい 10もん。じぶんで かんがえて、むずかしかったら ヒントを みよう。</p></div>
 <div class="practice-actions"><button type="button" id="dailyStart" class="practice-launch">🎯 きょうの10もんを はじめる</button></div>
-<div class="today-summary" id="dailyMini" aria-live="polite">きょうの れんしゅうを かくにんちゅう…</div>
+
 </section>
+<details class="pattern-explorer" id="patternExplorer"><summary>🔍 たしざんひょうを ひらく</summary>
+<p>「？」をタップして、こたえを ひらいてみよう。よこに1つすすむと？ 2＋3 と 3＋2 は？</p>
+<div id="patternGrid" class="pattern-grid" aria-label="1から5の足し算表"></div>
+<div id="patternMessage" class="pattern-message" role="status" aria-live="polite">こたえが おなじ ばしょも さがしてみよう！</div>
+<p class="small-note">小さな5×5の表。いつでもあそべるよ。？をタップしてみよう。</p>
+<button class="secondary" type="button" id="patternRestart">🔄 もういちど さがす</button></details>
 <details class="stage-chooser" id="stageChooser"><summary>🍒 ほかの れんしゅうを えらぶ</summary>
 <p class="stage-hint">たま → ず → しき → じぶん。むずかしいときは、もどっても いいよ。</p>
 <nav class="mode-nav" id="modeNav" aria-label="れんしゅうの だんかい">
@@ -57,14 +63,9 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 <div id="storyProblem" class="story-problem hidden"></div>
 <div class="play"><section id="leftPanel" class="panel"></section><section class="panel" id="rightPanel"></section></div>
 <div class="panel question" id="questionPanel"></div></div>
-<div class="completion hidden" id="completion"><div style="font-size:54px">🎉🍒🎉</div><h2 id="completionTitle">10もん クリア！</h2><p id="completionText"></p><div id="suggestBox" class="suggest hidden"></div><button id="repeat" class="primary" type="button">もう いっかい</button><div class="actions"><button type="button" id="tryNextStage" class="secondary hidden">つぎの だんかいを ためす</button></div><p class="small-note">「つぎへ」は練習の提案だよ。できる・できないを決めるテストではないよ。</p><details class="pattern-explorer" id="patternExplorer"><summary>🔍 おまけ：たしざんひょうの ひみつ</summary>
-<p>「？」をタップして、こたえを ひらいてみよう。よこに1つすすむと？ 2＋3 と 3＋2 は？</p>
-<div id="patternGrid" class="pattern-grid" aria-label="1から5の足し算表"></div>
-<div id="patternMessage" class="pattern-message" role="status" aria-live="polite">こたえが おなじ ばしょも さがしてみよう！</div>
-<p class="small-note">小さな5×5の表だよ。いっぱいに あけなくても OK。いつもの10問とは別のおまけだよ。</p>
-</details>
+<div class="completion hidden" id="completion"><div style="font-size:54px">🎉🍒🎉</div><h2 id="completionTitle">10もん クリア！</h2><p id="completionText"></p><div id="suggestBox" class="suggest hidden"></div><button id="repeat" class="primary" type="button">もう いっかい</button><div class="actions"><button type="button" id="tryNextStage" class="secondary hidden">つぎの だんかいを ためす</button></div><p class="small-note">「つぎへ」は練習の提案だよ。できる・できないを決めるテストではないよ。</p>
 </div>
-<details id="parentPanel"><summary>おうちの ひとへ｜練習記録と使い方</summary><p>①玉を動かす → ②図を見て想像する → ③さくらんぼ式で考える → ④図なしで答える、の順に支援を減らします。どの段階にも戻れます。おさらいは前に間違えたりヒントを使った問題を優先し、まず自力で考えます。「きょうの10もん」は式を見て自力で解き、必要なときだけヒントを使います。前の日の苦手問題や初めての問題を混ぜ、ときどき短い文章題と別の計算方法を紹介します。</p><div class="practice-parents"><strong>まいにちの おさらい</strong><div id="weeklyStats" class="weekly"></div><p>記録はこの端末の直近300問分を集計します。きょうの10もんには、前の日の苦手問題や初めての問題を混ぜ、ときどき文章題も出します。時間の速さは評価しません。</p></div><div id="parentStats" class="parent-stats"></div><p>各段階で「直近5問のうち4問を初回正解・ヒントなし」で次の段階を試す提案が出ます。これはアプリ独自の練習上の目安で、教育研究で確立された合格基準ではありません。理解の確認には、日を空けた復習や紙の問題も役立ちます。</p><p>記録はこの端末のブラウザ内だけに最大300問まで保存します。氏名や外部サービスへの学習情報の送信機能はありません。ブラウザのデータ消去・別端末では消失します。GitHub Pagesへの通常のアクセス通信は別です。</p><button type="button" id="clearStats" class="small-btn">この端末の学習記録を消す</button><span id="storageStatus" class="tiny"></span></details>
+<details id="parentPanel"><summary>おうちの ひとへ｜練習記録と使い方</summary><p>①玉を動かす → ②図を見て想像する → ③さくらんぼ式で考える → ④図なしで答える、の順に支援を減らします。どの段階にも戻れます。おさらいは前に間違えたりヒントを使った問題を優先し、まず自力で考えます。「きょうの10もん」は式を見て自力で解き、必要なときだけヒントを使います。前の日の苦手問題や初めての問題を混ぜ、ときどき短い文章題と別の計算方法を紹介します。</p><p>各段階で「直近5問のうち4問を初回正解・ヒントなし」で次の段階を試す提案が出ます。これはアプリ独自の練習上の目安で、教育研究で確立された合格基準ではありません。理解の確認には、日を空けた復習や紙の問題も役立ちます。</p><p>記録はこの端末のブラウザ内だけに最大300問まで保存します。氏名や外部サービスへの学習情報の送信機能はありません。ブラウザのデータ消去・別端末では消失します。GitHub Pagesへの通常のアクセス通信は別です。</p><button type="button" id="clearStats" class="small-btn">この端末の学習記録を消す</button><span id="storageStatus" class="tiny"></span></details>
 <p class="small-note">※無料の試作教材です。学習効果は未検証。最初は大人と一緒に試し、お子さんが戸惑うところを確認してください。</p>
 </main>
 <script>
@@ -109,7 +110,7 @@ function reviewQuestions(){const eligible=history.filter(r=>r.mode!=='review');c
  for(const p of shuffled(pool())){if(chosen.length>=10)break;if(!chosen.some(q=>q.a===p.a&&q.b===p.b))chosen.push(p)}return chosen;
 }
 function writeHistory(){if(!storageOk)return;try{localStorage.setItem(KEY,JSON.stringify(history.slice(-300)));}catch(e){storageOk=false;}$('storageStatus').textContent=storageOk?' （この端末に保存中）':' （保存できない環境です）'}
-function start(mode=s.mode){s.mode=mode;s.index=0;s.limit=10;s.shown=[];s.done=false;s.sessionResults=[];s.reviewPool=mode==='review'?reviewQuestions():[];s.plan=mode==='daily'?mixedPracticeQuestions(10,true):[];setQuestion();$('completion').classList.add('hidden');$('game').classList.remove('hidden');render();window.scrollTo({top:0,behavior:'auto'});}
+function start(mode=s.mode){$('patternExplorer').open=false;s.mode=mode;s.index=0;s.limit=10;s.shown=[];s.done=false;s.sessionResults=[];s.reviewPool=mode==='review'?reviewQuestions():[];s.plan=mode==='daily'?mixedPracticeQuestions(10,true):[];setQuestion();$('completion').classList.add('hidden');$('game').classList.remove('hidden');render();window.scrollTo({top:0,behavior:'auto'});}
 function setQuestion(){s.q=newProblem();s.shown.push(`${s.q.a}+${s.q.b}`);s.step=0;s.moved=0;s.wrong=0;s.hints=0;s.typed='';s.feedback='';s.feedbackError=false;}
 const need=()=>10-s.q.a;const rest=()=>s.q.b-need();const sum=()=>s.q.a+s.q.b;
 function showStory(){
@@ -231,7 +232,7 @@ function finishSession(){s.done=true;$('game').classList.add('hidden');$('comple
  let nextMode=STAGES.indexOf(s.mode)+1,eligible=STAGES.indexOf(s.mode)>=0&&s.mode!=='review'&&s.sessionResults.length>=5&&s.sessionResults.slice(-5).filter(r=>r.clean).length>=4&&nextMode<4;
  $('suggestBox').classList.toggle('hidden',!eligible);$('tryNextStage').classList.toggle('hidden',!eligible);
  if(eligible)$('suggestBox').textContent=`さいごの 5もんで 4もん できたよ。つぎの「${LABELS[MODES[nextMode]]}」も ためしてみよう。むずかしければ いつでも もどれるよ。`;
- updateStats();resetPatternTable();window.scrollTo({top:0,behavior:'auto'});
+ updateStats();window.scrollTo({top:0,behavior:'auto'});
 }
 
 const patternShown=new Set();
@@ -272,15 +273,15 @@ function resetPatternTable(){
  drawPatternTable();
 }
 function updateStats(){
- const day=today(),todays=history.filter(r=>r.date===day),clean=todays.filter(r=>r.clean).length;
- $('dailyMini').textContent=`📘 きょうは ${todays.length}もん れんしゅう！ そのうち ${clean}もんが ヒントなし・いっかいで せいかい。`;
- const week=$('weeklyStats');week.replaceChildren();for(let offset=6;offset>=0;offset--){const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()-offset);const str=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');const n=history.filter(h=>h.date===str).length;const el=document.createElement('div');el.className='weekly-day'+(!offset?' current':'');el.textContent=`${d.getMonth()+1}/${d.getDate()}`;const amount=document.createElement('strong');amount.textContent=n+'問';el.append(amount);week.append(el);}
- const stats=$('parentStats');stats.innerHTML='';for(const mode of MODES.filter(x=>x!=='drill')){const records=history.filter(r=>r.mode===mode),last=records.slice(-5),good=last.filter(r=>r.clean).length;const div=document.createElement('div');div.className='stats-row';div.innerHTML=`<strong>${LABELS[mode]}</strong><span>${records.length}問・直近${last.length}問で ${good}問 ヒントなし初回正解</span>`;stats.append(div)}$('storageStatus').textContent=storageOk?' （この端末に保存中）':' （保存できない環境です）';}
+ $('storageStatus').textContent=storageOk?' （苦手問題の選択に、この端末内の記録を使っています）':' （保存できない環境です）';
+}
 $('dailyStart').addEventListener('click',()=>start('daily'));
 
 $('modeNav').addEventListener('click',e=>{const btn=e.target.closest('[data-mode]');if(!btn||btn.dataset.mode===s.mode)return;start(btn.dataset.mode)});
 $('resetSession').addEventListener('click',()=>start(s.mode));$('repeat').addEventListener('click',()=>start(s.mode));$('tryNextStage').addEventListener('click',()=>{let i=MODES.indexOf(s.mode);if(i<3)start(STAGES[i+1])});
 $('clearStats').addEventListener('click',()=>{if(!confirm('この端末の がくしゅうきろくを ぜんぶ けしますか？'))return;history=[];try{localStorage.removeItem(KEY)}catch(e){storageOk=false}updateStats()});
+resetPatternTable();
+$('patternRestart').addEventListener('click',()=>{resetPatternTable();$('patternExplorer').open=true});
 start('beads');
 })();
 </script></body></html>
