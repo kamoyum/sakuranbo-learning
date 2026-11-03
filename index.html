@@ -18,44 +18,66 @@ main{max-width:960px;padding:14px 14px 48px;margin:auto}.top{display:flex;align-
 .cherry{position:relative;width:min(100%,260px);height:155px;margin:0 auto}.root,.leaf{position:absolute;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:31px;font-weight:950;color:#fff}.root{width:58px;height:58px;top:0;left:calc(50% - 29px);background:#70af83;z-index:1}.cherry svg{position:absolute;width:100%;height:80px;top:39px;left:0}.leaf{width:66px;height:66px;top:87px;border:3px solid white;box-shadow:0 2px 0 #d4dbd7}.leaf.left{left:calc(26% - 33px);background:#ef7b80}.leaf.right{right:calc(26% - 33px);background:#56a4e3}.split-label{display:flex;justify-content:space-around;font-size:12px;color:#7b8190;font-weight:800;gap:8px}.split-label span{width:45%;text-align:center}
 .strategy{font-size:17px;font-weight:900;line-height:1.7;color:#387961;text-align:center;background:#eff9f0;border-radius:11px;padding:8px;margin-top:9px}.question{margin-top:10px;text-align:center}.question h2{font-size:clamp(19px,4vw,25px);color:#a14d64;margin:6px 0}.question p{margin:3px 0 12px}.choices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.choice{min-height:65px;border:2px solid #eab7c1;background:#fff0f1;color:#a2445f;border-radius:15px;font-size:clamp(21px,4vw,28px);font-weight:950}.choice:active,.primary:active{transform:translateY(2px)}.primary{min-height:60px;padding:12px 20px;border:0;background:#db667e;color:#fff;border-radius:17px;font-size:21px;font-weight:900;width:100%}.secondary{min-height:47px;padding:8px 13px;border:2px solid #e4d1d2;border-radius:12px;background:#fff;color:#806b77;font-weight:850}.help{margin-top:12px}.feedback{font-weight:850;text-align:center;min-height:26px;margin-top:12px;font-size:15px;color:#4c8b6b;line-height:1.5}.feedback.error{color:#a8524a}.feedback:empty{min-height:0}.success{font-size:22px;text-align:center;color:#45815d;font-weight:950;margin:8px 0}.result{font-size:29px;text-align:center;font-weight:1000;color:#905069;margin:8px 0}
 .keypad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:335px;gap:8px;margin:10px auto}.keypad button{min-height:53px;background:#fff;border:2px solid #d9dce2;border-radius:13px;font-size:24px;font-weight:950;color:#465f75}.keypad .del{font-size:17px;color:#8b5b68}.typed{font-size:34px;font-weight:1000;letter-spacing:.1em;color:#93516b;min-height:50px;text-align:center;border-bottom:3px solid #e3cdd2;margin:4px auto 8px;max-width:170px}.completion{text-align:center;padding:28px 14px;background:white;border:1.5px solid #f0d7da;border-radius:21px}.completion h2{font-size:29px;color:#ad5669}.suggest{padding:12px;background:#ecf8ef;color:#387b59;border-radius:13px;font-weight:850;line-height:1.6;margin:12px 0}.small-note{color:#7b808a;font-size:12px;line-height:1.6;margin-top:9px}
+.practice-hub{border:2px solid #f2d9cb;background:linear-gradient(120deg,#fffefa,#fef0e9);border-radius:19px;padding:13px;margin-bottom:11px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px}.practice-hub h2{font-size:18px;margin:0 0 3px;color:#a04663}.practice-hub p{font-size:12px;margin:3px 0;color:#716c78;line-height:1.5}.practice-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.practice-launch{border:2px solid #b9dcd5;background:#edfbf6;color:#26735f;min-height:49px;border-radius:13px;padding:9px 11px;font-size:14px;font-weight:900}.practice-launch.fast{border-color:#e9c2aa;color:#9c582d;background:#fff3e7}.practice-launch.active{box-shadow:inset 0 0 0 2px #376f5b}.practice-launch.fast.active{box-shadow:inset 0 0 0 2px #a36334}.practice-count{min-height:48px;border:2px solid #e3d0c3;border-radius:13px;background:#fff;padding:7px;font:inherit;font-weight:900;color:#805467}.today-summary{font-size:12px;font-weight:800;color:#637378;grid-column:1/-1;border-top:1px solid #f0ded8;padding-top:9px}.weekly{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin:6px 0}.weekly-day{text-align:center;background:#f8f3ee;border-radius:9px;padding:6px 2px;font-size:11px;color:#776977}.weekly-day strong{display:block;font-size:16px;color:#95566c}.weekly-day.current{background:#edf8ee;color:#346f54}.practice-parents{padding:9px;background:#f9f5f0;border-radius:12px;font-size:12px;color:#776f73}
 details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-top:14px;padding:12px 14px;color:#6a747e;font-size:13px;line-height:1.65}details summary{font-size:15px;font-weight:900;cursor:pointer;color:#805b6e}.parent-stats{display:grid;gap:5px;margin-top:9px}.stats-row{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:#f9f4f1;border-radius:9px}.tiny{font-size:12px}.actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:13px}
-@media(max-width:720px){.play{display:block}.panel{padding:13px}.mode-nav{gap:5px}.mode-btn{min-height:59px;border-radius:11px}.stage-guide{font-size:13px;padding:9px 11px}.problem-head{font-size:11px}.problem-card{padding:6px 8px}.panel h2{font-size:18px}.frame{max-width:420px}.cherry{height:145px}.leaf{top:82px}.top .small-btn{font-size:12px}}
-@media(max-width:370px){main{padding:9px 8px 25px}.mode-btn{font-size:10px;padding:4px 0;min-height:52px}.mode-btn span{font-size:17px}.cell{border-radius:6px}.frame{gap:4px;padding:5px}.choices{gap:5px}.choice{min-height:56px}.ball{width:43px;height:43px;min-width:43px}.panel{border-radius:15px}}
+@media(max-width:720px){.practice-hub{grid-template-columns:1fr}.practice-actions{justify-content:stretch}.practice-launch{flex:1}.practice-count{flex:0 0 75px}.play{display:block}.panel{padding:13px}.mode-nav{gap:5px}.mode-btn{min-height:59px;border-radius:11px}.stage-guide{font-size:13px;padding:9px 11px}.problem-head{font-size:11px}.problem-card{padding:6px 8px}.panel h2{font-size:18px}.frame{max-width:420px}.cherry{height:145px}.leaf{top:82px}.top .small-btn{font-size:12px}}
+@media(max-width:530px){.practice-hub{padding:10px}.practice-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:7px}.practice-actions label{grid-column:1 / -1}.practice-actions #dailyStart{grid-column:1 / -1}.practice-actions #drillCount{grid-column:1;width:100%}.practice-actions #drillStart{grid-column:2}.practice-launch{width:100%;font-size:14px;line-height:1.35;word-break:keep-all;overflow-wrap:normal}}@media(max-width:370px){.practice-hub{padding:9px}.practice-launch{font-size:13px;padding:7px 5px}.practice-actions{gap:5px}main{padding:9px 8px 25px}.mode-btn{font-size:10px;padding:4px 0;min-height:52px}.mode-btn span{font-size:17px}.cell{border-radius:6px}.frame{gap:4px;padding:5px}.choices{gap:5px}.choice{min-height:56px}.ball{width:43px;height:43px;min-width:43px}.panel{border-radius:15px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body><main>
-<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v2.1</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
+<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v2.2</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
 <nav class="mode-nav" id="modeNav" aria-label="れんしゅうの だんかい">
 <button data-mode="beads" class="mode-btn active" aria-pressed="true"><span>🔴</span>① たま</button><button data-mode="picture" class="mode-btn" aria-pressed="false"><span>▦</span>② ず</button><button data-mode="bond" class="mode-btn" aria-pressed="false"><span>🍒</span>③ しき</button><button data-mode="mental" class="mode-btn" aria-pressed="false"><span>💡</span>④ じぶん</button><button data-mode="review" class="mode-btn" aria-pressed="false"><span>🌱</span>おさらい</button>
 </nav>
+<section class="practice-hub" aria-label="まいにちの けいさんれんしゅう">
+<div><h2>🌱 まいにち こつこつ</h2><p>といて つよくなる！ まずは 10もん。じかんは はからないよ。</p></div>
+<div class="practice-actions"><button type="button" id="dailyStart" class="practice-launch">🎯 きょうの10もん</button><label for="drillCount" class="tiny">もんだいすう</label><select id="drillCount" class="practice-count" aria-label="どんどん計算の問題数"><option value="5">5もん</option><option value="10" selected>10もん</option><option value="20">20もん</option></select><button type="button" id="drillStart" class="practice-launch fast">⚡ どんどん けいさん</button></div>
+<div class="today-summary" id="dailyMini" aria-live="polite">きょうの れんしゅうを かくにんちゅう…</div>
+</section>
 <div class="stage-guide" id="guide">① あおい たまを タップして、10を つくろう。</div>
 <div id="game"><div class="progress"><span id="progressLabel">1 / 10もん</span><div class="track"><div id="progressFill" class="fill"></div></div><span id="progressCount">🍒 0こ</span></div>
 <div class="problem-card"><div class="problem-head">さいしょの もんだいを いつも みよう</div><div class="problem" id="problem">8 ＋ 5 ＝ ？</div><div id="bridge" class="bridge"></div></div>
 <div class="play"><section id="leftPanel" class="panel"></section><section class="panel" id="rightPanel"></section></div>
 <div class="panel question" id="questionPanel"></div></div>
 <div class="completion hidden" id="completion"><div style="font-size:54px">🎉🍒🎉</div><h2 id="completionTitle">10もん クリア！</h2><p id="completionText"></p><div id="suggestBox" class="suggest hidden"></div><button id="repeat" class="primary" type="button">もう いっかい</button><div class="actions"><button type="button" id="tryNextStage" class="secondary hidden">つぎの だんかいを ためす</button></div><p class="small-note">「つぎへ」は練習の提案だよ。できる・できないを決めるテストではないよ。</p></div>
-<details id="parentPanel"><summary>おうちの ひとへ｜練習記録と使い方</summary><p>①玉を動かす → ②図を見て想像する → ③さくらんぼ式で考える → ④図なしで答える、の順に支援を減らします。どの段階にも戻れます。おさらいは前に間違えたりヒントを使った問題を優先し、まず自力で考えます。</p><div id="parentStats" class="parent-stats"></div><p>各段階で「直近5問のうち4問を初回正解・ヒントなし」で次の段階を試す提案が出ます。これはアプリ独自の練習上の目安で、教育研究で確立された合格基準ではありません。理解の確認には、日を空けた復習や紙の問題も役立ちます。</p><p>記録はこの端末のブラウザ内だけに保存します。氏名や外部サービスへの学習情報の送信機能はありません。ブラウザのデータ消去・別端末では消失します。GitHub Pagesへの通常のアクセス通信は別です。</p><button type="button" id="clearStats" class="small-btn">この端末の学習記録を消す</button><span id="storageStatus" class="tiny"></span></details>
+<details id="parentPanel"><summary>おうちの ひとへ｜練習記録と使い方</summary><p>①玉を動かす → ②図を見て想像する → ③さくらんぼ式で考える → ④図なしで答える、の順に支援を減らします。どの段階にも戻れます。おさらいは前に間違えたりヒントを使った問題を優先し、まず自力で考えます。「きょうの10もん」「どんどん計算」は和を数字で入力し、苦手問題・初めての問題を織り交ぜます。</p><div class="practice-parents"><strong>まいにちの おさらい</strong><div id="weeklyStats" class="weekly"></div><p>記録はこの端末の直近300問分を集計します。繰り返し練習では、前に間違えた問題や初めての問題も混ぜます。時間の速さは評価しません。</p></div><div id="parentStats" class="parent-stats"></div><p>各段階で「直近5問のうち4問を初回正解・ヒントなし」で次の段階を試す提案が出ます。これはアプリ独自の練習上の目安で、教育研究で確立された合格基準ではありません。理解の確認には、日を空けた復習や紙の問題も役立ちます。</p><p>記録はこの端末のブラウザ内だけに最大300問まで保存します。氏名や外部サービスへの学習情報の送信機能はありません。ブラウザのデータ消去・別端末では消失します。GitHub Pagesへの通常のアクセス通信は別です。</p><button type="button" id="clearStats" class="small-btn">この端末の学習記録を消す</button><span id="storageStatus" class="tiny"></span></details>
 <p class="small-note">※無料の試作教材です。学習効果は未検証。最初は大人と一緒に試し、お子さんが戸惑うところを確認してください。</p>
 </main>
 <script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
-const MODES=['beads','picture','bond','mental','review'];
-const LABELS={beads:'① たま',picture:'② ず',bond:'③ しき',mental:'④ じぶん',review:'おさらい'};
-const GUIDES={beads:'① あおい たまを タップして、10を つくろう。',picture:'② ずを みて、あたまの なかで たまを うごかそう。',bond:'③ さくらんぼの かずを かんがえよう。',mental:'④ まずは ずを みないで こたえてみよう。',review:'🌱 まえの もんだいを、じぶんの ちからで おさらい。'};
+const STAGES=['beads','picture','bond','mental','review'];
+const MODES=[...STAGES,'daily','drill'];
+const LABELS={beads:'① たま',picture:'② ず',bond:'③ しき',mental:'④ じぶん',review:'おさらい',daily:'きょうの10もん',drill:'どんどん計算'};
+const GUIDES={beads:'① あおい たまを タップして、10を つくろう。',picture:'② ずを みて、あたまの なかで たまを うごかそう。',bond:'③ さくらんぼの かずを かんがえよう。',mental:'④ まずは ずを みないで こたえてみよう。',review:'🌱 まえの もんだいを、じぶんの ちからで おさらい。',daily:'🎯 きょうの10もん。まずは じぶんの ちからで こたえよう。',drill:'⚡ どんどん計算。じかんよりも ただしさを たいせつに。'};
 const KEY='sakuranbo-learning-v2-history';
 let history=[];let storageOk=true;
-try{const raw=localStorage.getItem(KEY);if(raw){const j=JSON.parse(raw);if(Array.isArray(j))history=j.filter(r=>Number.isInteger(r.a)&&Number.isInteger(r.b)&&MODES.includes(r.mode));}}catch(e){storageOk=false;}
-let s={mode:'beads',index:0,limit:10,q:null,shown:[],step:0,moved:0,wrong:0,hints:0,typed:'',feedback:'',feedbackError:false,done:false,sessionResults:[],reviewPool:[]};
+try{const raw=localStorage.getItem(KEY);if(raw){const j=JSON.parse(raw);if(Array.isArray(j))history=j.filter(r=>Number.isInteger(r.a)&&r.a>=6&&r.a<=9&&Number.isInteger(r.b)&&r.b>=2&&r.b<=9&&r.a+r.b>10&&MODES.includes(r.mode)&&typeof r.date==='string');}}catch(e){storageOk=false;}
+let s={mode:'beads',index:0,limit:10,q:null,shown:[],step:0,moved:0,wrong:0,hints:0,typed:'',feedback:'',feedbackError:false,done:false,sessionResults:[],reviewPool:[],plan:[]};
 const today=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
 const rand=n=>Math.floor(Math.random()*n);
 function shuffled(arr){for(let i=arr.length-1;i>0;i--){let j=rand(i+1);[arr[i],arr[j]]=[arr[j],arr[i]];}return arr}
 function pool(){const p=[];for(let a=6;a<=9;a++)for(let b=11-a;b<=9;b++)p.push({a,b});return p}
-function newProblem(){if(s.mode==='review'&&s.reviewPool.length){let q=s.reviewPool.shift();return {a:q.a,b:q.b};}
+function newProblem(){if(s.plan.length){const q=s.plan.shift();return {a:q.a,b:q.b};}if(s.mode==='review'&&s.reviewPool.length){let q=s.reviewPool.shift();return {a:q.a,b:q.b};}
  let candidates=pool();
  let used=new Set(s.shown.slice(-7));let available=candidates.filter(p=>!used.has(`${p.a}+${p.b}`));if(!available.length)available=candidates;
  return {...available[rand(available.length)]};}
+// 練習問題は同じセット内では重複しない（最大26通り）。
+// 苦手・未経験・以前解いた問題を混ぜる。特定の日数での「習得判定」はしない。
+function mixedPracticeQuestions(count,daily=false){
+ const all=shuffled(pool());const byPair=new Map();
+ for(const h of history){const key=`${h.a}+${h.b}`,p=byPair.get(key)||{tries:0,last:'',struggle:false};p.tries++;p.last=h.date;p.struggle=!h.clean;byPair.set(key,p)}
+ const struggling=shuffled(all.filter(q=>byPair.get(`${q.a}+${q.b}`)?.struggle));
+ const unseen=shuffled(all.filter(q=>!byPair.has(`${q.a}+${q.b}`)));
+ const older=shuffled(all.filter(q=>byPair.has(`${q.a}+${q.b}`)&&byPair.get(`${q.a}+${q.b}`).last<today()));
+ const selected=[],seen=new Set();
+ const take=(xs,max)=>{for(const q of xs){if(selected.length>=max)break;const k=`${q.a}+${q.b}`;if(!seen.has(k)){selected.push({a:q.a,b:q.b});seen.add(k)}}};
+ if(daily){take(struggling,Math.ceil(count*.4));take(unseen,Math.ceil(count*.8));take(older,count)}
+ else {take(struggling,Math.ceil(count*.3));take(unseen,Math.ceil(count*.65));}
+ take(all,count);
+ return shuffled(selected).slice(0,count);
+}
 function reviewQuestions(){const eligible=history.filter(r=>r.mode!=='review');const pairs=new Map();eligible.forEach(r=>{let k=`${r.a}+${r.b}`;const p=pairs.get(k)||{a:r.a,b:r.b,struggles:0,seen:0,last:r.date||''};p.seen++;if(!r.clean)p.struggles++;p.last=r.date||p.last;pairs.set(k,p)});
  const prior=Array.from(pairs.values()).filter(r=>r.last<today()).sort((a,b)=>b.struggles-a.struggles||a.last.localeCompare(b.last));
  const same=Array.from(pairs.values()).filter(r=>r.last>=today()).sort((a,b)=>b.struggles-a.struggles||a.seen-b.seen);
@@ -63,7 +85,7 @@ function reviewQuestions(){const eligible=history.filter(r=>r.mode!=='review');c
  for(const p of shuffled(pool())){if(chosen.length>=5)break;if(!chosen.some(q=>q.a===p.a&&q.b===p.b))chosen.push(p)}return chosen;
 }
 function writeHistory(){if(!storageOk)return;try{localStorage.setItem(KEY,JSON.stringify(history.slice(-300)));}catch(e){storageOk=false;}$('storageStatus').textContent=storageOk?' （この端末に保存中）':' （保存できない環境です）'}
-function start(mode=s.mode){s.mode=mode;s.index=0;s.limit=mode==='review'?5:10;s.shown=[];s.done=false;s.sessionResults=[];s.reviewPool=mode==='review'?reviewQuestions():[];setQuestion();$('completion').classList.add('hidden');$('game').classList.remove('hidden');render();window.scrollTo({top:0,behavior:'auto'});}
+function start(mode=s.mode,length=null){s.mode=mode;s.index=0;s.limit=mode==='review'?5:mode==='daily'?10:mode==='drill'?(Number.isInteger(length)&&[5,10,20].includes(length)?length:10):10;s.shown=[];s.done=false;s.sessionResults=[];s.reviewPool=mode==='review'?reviewQuestions():[];s.plan=mode==='daily'?mixedPracticeQuestions(10,true):mode==='drill'?mixedPracticeQuestions(s.limit,false):[];setQuestion();$('completion').classList.add('hidden');$('game').classList.remove('hidden');render();window.scrollTo({top:0,behavior:'auto'});}
 function setQuestion(){s.q=newProblem();s.shown.push(`${s.q.a}+${s.q.b}`);s.step=0;s.moved=0;s.wrong=0;s.hints=0;s.typed='';s.feedback='';s.feedbackError=false;}
 const need=()=>10-s.q.a;const rest=()=>s.q.b-need();const sum=()=>s.q.a+s.q.b;
 function say(t,error=false){s.feedback=t;s.feedbackError=error;render()}
@@ -109,12 +131,13 @@ function render(){
  const a=s.q.a,b=s.q.b,n=need(),r=rest(),hasRemainder=(s.step>=2),win=(s.step===3);
  $('guide').textContent=GUIDES[s.mode];
  document.querySelectorAll('.mode-btn').forEach(x=>{const on=x.dataset.mode===s.mode;x.classList.toggle('active',on);x.setAttribute('aria-pressed',String(on))});
+ $('dailyStart').classList.toggle('active',s.mode==='daily');$('drillStart').classList.toggle('active',s.mode==='drill');
  $('progressLabel').textContent=`${s.index+1} / ${s.limit}もん`;
  $('progressCount').textContent=`🍒 ${s.index}こ`;
  $('progressFill').style.width=`${100*s.index/s.limit}%`;
  $('problem').innerHTML=`<span class="a">${a}</span> ＋ <span class="b">${b}</span> ＝ ${win?sum():'？'}`;
  const bridge=$('bridge');
- bridge.textContent=(s.mode==='mental'||s.mode==='review')&&!win?'':s.step===1?`${a} ＋ (${n} ＋ □) ＝ ？`:hasRemainder?`${a} ＋ (${n} ＋ ${r}) ＝ 10 ＋ ${r}${win?' ＝ '+sum():''}`:'';
+ bridge.textContent=(['mental','review','daily','drill'].includes(s.mode))&&!win?'':s.step===1?`${a} ＋ (${n} ＋ □) ＝ ？`:hasRemainder?`${a} ＋ (${n} ＋ ${r}) ＝ 10 ＋ ${r}${win?' ＝ '+sum():''}`:'';
  let left='',right='',question='';
  if(win){
    left=`<h2>🌸 せいかい！</h2>${cherry(a,b,n,r)}<div class="strategy">${a} ＋ (${n} ＋ ${r}) ＝ 10 ＋ ${r}</div>`;
@@ -140,7 +163,7 @@ function render(){
      s.step===1?`<h2>${b} ＝ ${n} ＋ □</h2><p>□に はいる かずは？</p>${answerKeypad('のこりの かずを こたえる')}${actionsHelp()}`:
      `<h2>${a} ＋ ${b} は いくつ？</h2><p>10 ＋ ${r} で かんがえよう</p>${numberChoices(sum(),'sum')}${actionsHelp()}`;
  }else{
-   // Mental and review intentionally require only the final answer; reveal decomposition solely on request for a hint.
+   // 自力・おさらい・毎日の練習は和を入力する。助けは明示的に使った場合だけ表示。
    left=`<h2>じぶんで けいさん</h2><p>はじめは ずを かくして いるよ。こまったら ヒントを つかって OK。</p>${s.hints>=1?`<h2>ヒント ${s.hints>=2?'②':'①'}</h2>${showTenFrame(a,0,false,false)}`:'<div style="font-size:64px;text-align:center;margin:10px 0" aria-hidden="true">🧠</div>'}${s.hints>=2?`<div class="strategy">${cherry(a,b,n,'？')}${b} ＝ ${n} ＋ □</div>`:''}`;
    right=`<h2>こたえを おしてね</h2>${answerKeypad()}`;
    question=`<p>まちがえても だいじょうぶ。じぶんで かんがえるのが たいせつ。</p>${s.hints<2?actionsHelp():''}`;
@@ -149,7 +172,7 @@ function render(){
  document.querySelectorAll('.choice').forEach(el=>el.addEventListener('click',()=>pickNumber(Number(el.dataset.answer),el.dataset.kind)));
  if(s.mode==='beads'&&s.step===0)dragSetup();
  document.querySelectorAll('[data-key]').forEach(el=>el.addEventListener('click',()=>{const k=el.dataset.key;if(k==='けす')s.typed=s.typed.slice(0,-1);else if(k==='ぜんぶけす')s.typed='';else if(s.typed.length<2)s.typed+=k;s.feedback='';render()}));
- $('submit')?.addEventListener('click',()=>{if(s.typed){if((s.mode==='mental'||s.mode==='review'))finishAnswer(Number(s.typed));else if(s.step===1)finishRemainder(Number(s.typed));}});
+ $('submit')?.addEventListener('click',()=>{if(s.typed){if(['mental','review','daily','drill'].includes(s.mode))finishAnswer(Number(s.typed));else if(s.step===1)finishRemainder(Number(s.typed));}});
  $('help')?.addEventListener('click',()=>{
    s.hints++;
    if(s.step===1){s.feedback='ヒント：'+b+'こ あるうち、'+n+'こを 10に つかったよ。 のこりは いくつ？';}
@@ -164,14 +187,20 @@ function render(){
 function advance(){s.index++;if(s.index>=s.limit){finishSession();return;}setQuestion();render();window.scrollTo({top:0,behavior:'auto'})}
 function finishSession(){s.done=true;$('game').classList.add('hidden');$('completion').classList.remove('hidden');$('completionTitle').textContent=`${s.limit}もん おわったよ！`;
  const clean=s.sessionResults.filter(r=>r.clean).length;$('completionText').textContent=`ヒントなし・さいしょの こたえで できたのは ${clean} / ${s.limit}もん。がんばったね！`;
- let nextMode=MODES.indexOf(s.mode)+1,eligible=s.mode!=='review'&&s.sessionResults.length>=5&&s.sessionResults.slice(-5).filter(r=>r.clean).length>=4&&nextMode<4;
+ let nextMode=STAGES.indexOf(s.mode)+1,eligible=STAGES.indexOf(s.mode)>=0&&s.mode!=='review'&&s.sessionResults.length>=5&&s.sessionResults.slice(-5).filter(r=>r.clean).length>=4&&nextMode<4;
  $('suggestBox').classList.toggle('hidden',!eligible);$('tryNextStage').classList.toggle('hidden',!eligible);
  if(eligible)$('suggestBox').textContent=`さいごの 5もんで 4もん できたよ。つぎの「${LABELS[MODES[nextMode]]}」も ためしてみよう。むずかしければ いつでも もどれるよ。`;
  updateStats();window.scrollTo({top:0,behavior:'auto'});
 }
-function updateStats(){const stats=$('parentStats');stats.innerHTML='';for(const mode of MODES){const records=history.filter(r=>r.mode===mode),last=records.slice(-5),good=last.filter(r=>r.clean).length;const div=document.createElement('div');div.className='stats-row';div.innerHTML=`<strong>${LABELS[mode]}</strong><span>${records.length}問・直近${last.length}問で ${good}問 ヒントなし初回正解</span>`;stats.append(div)}$('storageStatus').textContent=storageOk?' （この端末に保存中）':' （保存できない環境です）';}
+function updateStats(){
+ const day=today(),todays=history.filter(r=>r.date===day),clean=todays.filter(r=>r.clean).length;
+ $('dailyMini').textContent=`📘 きょうは ${todays.length}もん れんしゅう！ そのうち ${clean}もんが ヒントなし・いっかいで せいかい。`;
+ const week=$('weeklyStats');week.replaceChildren();for(let offset=6;offset>=0;offset--){const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()-offset);const str=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');const n=history.filter(h=>h.date===str).length;const el=document.createElement('div');el.className='weekly-day'+(!offset?' current':'');el.textContent=`${d.getMonth()+1}/${d.getDate()}`;const amount=document.createElement('strong');amount.textContent=n+'問';el.append(amount);week.append(el);}
+ const stats=$('parentStats');stats.innerHTML='';for(const mode of MODES){const records=history.filter(r=>r.mode===mode),last=records.slice(-5),good=last.filter(r=>r.clean).length;const div=document.createElement('div');div.className='stats-row';div.innerHTML=`<strong>${LABELS[mode]}</strong><span>${records.length}問・直近${last.length}問で ${good}問 ヒントなし初回正解</span>`;stats.append(div)}$('storageStatus').textContent=storageOk?' （この端末に保存中）':' （保存できない環境です）';}
+$('dailyStart').addEventListener('click',()=>start('daily'));
+$('drillStart').addEventListener('click',()=>start('drill',Number($('drillCount').value)));
 $('modeNav').addEventListener('click',e=>{const btn=e.target.closest('[data-mode]');if(!btn||btn.dataset.mode===s.mode)return;start(btn.dataset.mode)});
-$('resetSession').addEventListener('click',()=>start());$('repeat').addEventListener('click',()=>start());$('tryNextStage').addEventListener('click',()=>{let i=MODES.indexOf(s.mode);if(i<3)start(MODES[i+1])});
+$('resetSession').addEventListener('click',()=>start(s.mode,s.mode==='drill'?s.limit:null));$('repeat').addEventListener('click',()=>start(s.mode,s.mode==='drill'?s.limit:null));$('tryNextStage').addEventListener('click',()=>{let i=MODES.indexOf(s.mode);if(i<3)start(STAGES[i+1])});
 $('clearStats').addEventListener('click',()=>{if(!confirm('この端末の がくしゅうきろくを ぜんぶ けしますか？'))return;history=[];try{localStorage.removeItem(KEY)}catch(e){storageOk=false}updateStats()});
 start('beads');
 })();
