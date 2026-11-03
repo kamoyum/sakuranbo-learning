@@ -23,6 +23,12 @@ main{max-width:960px;padding:14px 14px 48px;margin:auto}.top{display:flex;align-
 .story-problem{background:#fff8e8;border:2px solid #eed9a7;color:#795439;border-radius:14px;padding:11px 13px;margin:-3px 0 12px;font-size:clamp(14px,2.5vw,17px);font-weight:850;line-height:1.65}.story-problem .story-label{font-size:12px;color:#a27633;display:block;font-weight:900;margin-bottom:2px}.strategy-tip{margin:10px 0;padding:10px 12px;background:#eff7ff;border:1px solid #c6dff0;border-radius:12px;font-size:15px;font-weight:800;color:#336b8e;line-height:1.65}.strategy-tip small{display:block;font-size:12px;color:#567b93;margin-bottom:3px}
 details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-top:14px;padding:12px 14px;color:#6a747e;font-size:13px;line-height:1.65}details summary{font-size:15px;font-weight:900;cursor:pointer;color:#805b6e}.parent-stats{display:grid;gap:5px;margin-top:9px}.stats-row{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:#f9f4f1;border-radius:9px}.tiny{font-size:12px}.actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:13px}
 
+.learning-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0 0 14px}
+.learning-tab{border:2px solid #e4cdd8;background:#fff;color:#80506c;padding:11px 6px;min-height:62px;border-radius:15px;font-size:clamp(13px,2.4vw,18px);font-weight:900;line-height:1.35}
+.learning-tab.active{border-color:#a94e6d;background:#a94e6d;color:#fff;box-shadow:0 3px 0 #e5bccb}
+.learning-tab:focus-visible{outline:3px solid #246ba9;outline-offset:3px}
+#practiceView[hidden],#patternView[hidden],#resetSession[hidden]{display:none!important}
+.pattern-explorer h2{margin:0;color:#895579;font-size:clamp(18px,3.2vw,22px)}
 .pattern-explorer{margin:18px 0 4px;text-align:left;background:#fcfafd;border:1px solid #e6d8ea;border-radius:15px;padding:12px}
 .pattern-explorer summary{font-weight:900;color:#8a547a;font-size:16px;cursor:pointer}
 .pattern-explorer p{font-size:13px;line-height:1.6;color:#72687b;margin:10px 0}
@@ -40,18 +46,18 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 </style>
 </head>
 <body><main>
-<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v2.6</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
+<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v2.7</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
+<nav class="learning-tabs" role="tablist" aria-label="まなぶ ないよう">
+<button id="tabPractice" class="learning-tab active" type="button" role="tab" aria-selected="true" aria-controls="practiceView">🍒 10もん れんしゅう</button>
+<button id="tabPattern" class="learning-tab" type="button" role="tab" aria-selected="false" aria-controls="patternView">🔍 たしざんひょうの きまり</button>
+</nav>
+<section id="practiceView" role="tabpanel" aria-labelledby="tabPractice">
 <section class="practice-hub" aria-label="まいにちの けいさんれんしゅう">
 <div><h2>🌱 まいにち 10もん</h2><p>1かい 10もん。じぶんで かんがえて、むずかしかったら ヒントを みよう。</p></div>
 <div class="practice-actions"><button type="button" id="dailyStart" class="practice-launch">🎯 きょうの10もんを はじめる</button></div>
 
 </section>
-<details class="pattern-explorer" id="patternExplorer"><summary>🔍 たしざんひょうを ひらく</summary>
-<p>「？」をタップして、こたえを ひらいてみよう。よこに1つすすむと？ 2＋3 と 3＋2 は？</p>
-<div id="patternGrid" class="pattern-grid" aria-label="1から5の足し算表"></div>
-<div id="patternMessage" class="pattern-message" role="status" aria-live="polite">こたえが おなじ ばしょも さがしてみよう！</div>
-<p class="small-note">小さな5×5の表。いつでもあそべるよ。？をタップしてみよう。</p>
-<button class="secondary" type="button" id="patternRestart">🔄 もういちど さがす</button></details>
+
 <details class="stage-chooser" id="stageChooser"><summary>🍒 ほかの れんしゅうを えらぶ</summary>
 <p class="stage-hint">たま → ず → しき → じぶん。むずかしいときは、もどっても いいよ。</p>
 <nav class="mode-nav" id="modeNav" aria-label="れんしゅうの だんかい">
@@ -66,6 +72,15 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 <div class="completion hidden" id="completion"><div style="font-size:54px">🎉🍒🎉</div><h2 id="completionTitle">10もん クリア！</h2><p id="completionText"></p><div id="suggestBox" class="suggest hidden"></div><button id="repeat" class="primary" type="button">もう いっかい</button><div class="actions"><button type="button" id="tryNextStage" class="secondary hidden">つぎの だんかいを ためす</button></div><p class="small-note">「つぎへ」は練習の提案だよ。できる・できないを決めるテストではないよ。</p>
 </div>
 <details id="parentPanel"><summary>おうちの ひとへ｜練習記録と使い方</summary><p>①玉を動かす → ②図を見て想像する → ③さくらんぼ式で考える → ④図なしで答える、の順に支援を減らします。どの段階にも戻れます。おさらいは前に間違えたりヒントを使った問題を優先し、まず自力で考えます。「きょうの10もん」は式を見て自力で解き、必要なときだけヒントを使います。前の日の苦手問題や初めての問題を混ぜ、ときどき短い文章題と別の計算方法を紹介します。</p><p>各段階で「直近5問のうち4問を初回正解・ヒントなし」で次の段階を試す提案が出ます。これはアプリ独自の練習上の目安で、教育研究で確立された合格基準ではありません。理解の確認には、日を空けた復習や紙の問題も役立ちます。</p><p>記録はこの端末のブラウザ内だけに最大300問まで保存します。氏名や外部サービスへの学習情報の送信機能はありません。ブラウザのデータ消去・別端末では消失します。GitHub Pagesへの通常のアクセス通信は別です。</p><button type="button" id="clearStats" class="small-btn">この端末の学習記録を消す</button><span id="storageStatus" class="tiny"></span></details>
+</section>
+<section id="patternView" role="tabpanel" aria-labelledby="tabPattern" hidden>
+<div class="pattern-explorer" id="patternExplorer"><h2>🔍 たしざんひょうの きまり</h2>
+<p>「？」をタップして、こたえを ひらいてみよう。よこに1つすすむと？ 2＋3 と 3＋2 は？</p>
+<div id="patternGrid" class="pattern-grid" aria-label="1から5の足し算表"></div>
+<div id="patternMessage" class="pattern-message" role="status" aria-live="polite">こたえが おなじ ばしょも さがしてみよう！</div>
+<p class="small-note">小さな5×5の表。いつでもあそべるよ。？をタップしてみよう。</p>
+<button class="secondary" type="button" id="patternRestart">🔄 もういちど さがす</button></div>
+</section>
 <p class="small-note">※無料の試作教材です。学習効果は未検証。最初は大人と一緒に試し、お子さんが戸惑うところを確認してください。</p>
 </main>
 <script>
@@ -110,7 +125,7 @@ function reviewQuestions(){const eligible=history.filter(r=>r.mode!=='review');c
  for(const p of shuffled(pool())){if(chosen.length>=10)break;if(!chosen.some(q=>q.a===p.a&&q.b===p.b))chosen.push(p)}return chosen;
 }
 function writeHistory(){if(!storageOk)return;try{localStorage.setItem(KEY,JSON.stringify(history.slice(-300)));}catch(e){storageOk=false;}$('storageStatus').textContent=storageOk?' （この端末に保存中）':' （保存できない環境です）'}
-function start(mode=s.mode){$('patternExplorer').open=false;s.mode=mode;s.index=0;s.limit=10;s.shown=[];s.done=false;s.sessionResults=[];s.reviewPool=mode==='review'?reviewQuestions():[];s.plan=mode==='daily'?mixedPracticeQuestions(10,true):[];setQuestion();$('completion').classList.add('hidden');$('game').classList.remove('hidden');render();window.scrollTo({top:0,behavior:'auto'});}
+function start(mode=s.mode){s.mode=mode;s.index=0;s.limit=10;s.shown=[];s.done=false;s.sessionResults=[];s.reviewPool=mode==='review'?reviewQuestions():[];s.plan=mode==='daily'?mixedPracticeQuestions(10,true):[];setQuestion();$('completion').classList.add('hidden');$('game').classList.remove('hidden');render();window.scrollTo({top:0,behavior:'auto'});}
 function setQuestion(){s.q=newProblem();s.shown.push(`${s.q.a}+${s.q.b}`);s.step=0;s.moved=0;s.wrong=0;s.hints=0;s.typed='';s.feedback='';s.feedbackError=false;}
 const need=()=>10-s.q.a;const rest=()=>s.q.b-need();const sum=()=>s.q.a+s.q.b;
 function showStory(){
@@ -268,7 +283,6 @@ function drawPatternTable(){
 function resetPatternTable(){
  patternShown.clear();lastPattern=null;
  for(let i=1;i<=5;i++){patternShown.add('1-'+i);patternShown.add(i+'-1');}
- $('patternExplorer').open=false;
  $('patternMessage').textContent='2＋3 と 3＋2 を タップしてみよう！';
  drawPatternTable();
 }
@@ -280,8 +294,23 @@ $('dailyStart').addEventListener('click',()=>start('daily'));
 $('modeNav').addEventListener('click',e=>{const btn=e.target.closest('[data-mode]');if(!btn||btn.dataset.mode===s.mode)return;start(btn.dataset.mode)});
 $('resetSession').addEventListener('click',()=>start(s.mode));$('repeat').addEventListener('click',()=>start(s.mode));$('tryNextStage').addEventListener('click',()=>{let i=MODES.indexOf(s.mode);if(i<3)start(STAGES[i+1])});
 $('clearStats').addEventListener('click',()=>{if(!confirm('この端末の がくしゅうきろくを ぜんぶ けしますか？'))return;history=[];try{localStorage.removeItem(KEY)}catch(e){storageOk=false}updateStats()});
+function selectLearningTab(name){
+ const practice=name==='practice';
+ $('practiceView').hidden=!practice;
+ $('patternView').hidden=practice;
+ $('tabPractice').classList.toggle('active',practice);
+ $('tabPattern').classList.toggle('active',!practice);
+ $('tabPractice').setAttribute('aria-selected',String(practice));
+ $('tabPattern').setAttribute('aria-selected',String(!practice));
+ $('resetSession').hidden=!practice;
+ window.scrollTo({top:0,behavior:'auto'});
+}
+$('tabPractice').addEventListener('click',()=>selectLearningTab('practice'));
+$('tabPattern').addEventListener('click',()=>selectLearningTab('pattern'));
+$('tabPractice').addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();$('tabPattern').focus();selectLearningTab('pattern')}});
+$('tabPattern').addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();$('tabPractice').focus();selectLearningTab('practice')}});
 resetPatternTable();
-$('patternRestart').addEventListener('click',()=>{resetPatternTable();$('patternExplorer').open=true});
+$('patternRestart').addEventListener('click',resetPatternTable);
 start('beads');
 })();
 </script></body></html>
