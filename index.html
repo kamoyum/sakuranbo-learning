@@ -18,6 +18,16 @@ main{max-width:960px;padding:14px 14px 48px;margin:auto}.top{display:flex;align-
 .cherry{position:relative;width:min(100%,260px);height:155px;margin:0 auto}.root,.leaf{position:absolute;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:31px;font-weight:950;color:#fff}.root{width:58px;height:58px;top:0;left:calc(50% - 29px);background:#70af83;z-index:1}.cherry svg{position:absolute;width:100%;height:80px;top:39px;left:0}.leaf{width:66px;height:66px;top:87px;border:3px solid white;box-shadow:0 2px 0 #d4dbd7}.leaf.left{left:calc(26% - 33px);background:#ef7b80}.leaf.right{right:calc(26% - 33px);background:#56a4e3}.split-label{display:flex;justify-content:space-around;font-size:12px;color:#7b8190;font-weight:800;gap:8px}.split-label span{width:45%;text-align:center}
 .strategy{font-size:17px;font-weight:900;line-height:1.7;color:#387961;text-align:center;background:#eff9f0;border-radius:11px;padding:8px;margin-top:9px}.question{margin-top:10px;text-align:center}.question h2{font-size:clamp(19px,4vw,25px);color:#a14d64;margin:6px 0}.question p{margin:3px 0 12px}.choices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.choice{min-height:65px;border:2px solid #eab7c1;background:#fff0f1;color:#a2445f;border-radius:15px;font-size:clamp(21px,4vw,28px);font-weight:950}.choice:active,.primary:active{transform:translateY(2px)}.primary{min-height:60px;padding:12px 20px;border:0;background:#db667e;color:#fff;border-radius:17px;font-size:21px;font-weight:900;width:100%}.secondary{min-height:47px;padding:8px 13px;border:2px solid #e4d1d2;border-radius:12px;background:#fff;color:#806b77;font-weight:850}.help{margin-top:12px}.feedback{font-weight:850;text-align:center;min-height:26px;margin-top:12px;font-size:15px;color:#4c8b6b;line-height:1.5}.feedback.error{color:#a8524a}.feedback:empty{min-height:0}.success{font-size:22px;text-align:center;color:#45815d;font-weight:950;margin:8px 0}.result{font-size:29px;text-align:center;font-weight:1000;color:#905069;margin:8px 0}
 .keypad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:335px;gap:8px;margin:10px auto}.keypad button{min-height:53px;background:#fff;border:2px solid #d9dce2;border-radius:13px;font-size:24px;font-weight:950;color:#465f75}.keypad .del{font-size:17px;color:#8b5b68}.typed{font-size:34px;font-weight:1000;letter-spacing:.1em;color:#93516b;min-height:50px;text-align:center;border-bottom:3px solid #e3cdd2;margin:4px auto 8px;max-width:170px}.completion{text-align:center;padding:28px 14px;background:white;border:1.5px solid #f0d7da;border-radius:21px}.completion h2{font-size:29px;color:#ad5669}.suggest{padding:12px;background:#ecf8ef;color:#387b59;border-radius:13px;font-weight:850;line-height:1.6;margin:12px 0}.small-note{color:#7b808a;font-size:12px;line-height:1.6;margin-top:9px}
+.farm-status{display:flex;align-items:center;gap:12px;background:#f2faf1;border:1.5px solid #cbe4cd;border-radius:16px;padding:9px 12px;margin:0 0 12px;color:#396b4e;min-width:0}
+.farm-figure{font-size:35px;line-height:1.2;flex:0 0 auto}
+.farm-copy{min-width:0;flex:1}.farm-name{font-weight:950;font-size:14px;margin:0 0 2px}.farm-detail{font-size:12px;font-weight:800;line-height:1.4}
+.farm-progress{font-weight:900;font-size:12px;white-space:nowrap;color:#557664}
+.farm-celebrate{background:linear-gradient(145deg,#f0fbef,#fffaf0);border:2px solid #cbe5cf;border-radius:17px;padding:15px 12px;margin:14px 0}
+.farm-celebrate .farm-big{font-size:54px;line-height:1.25}.farm-celebrate h3{font-size:19px;margin:5px 0;color:#39754e}
+.farm-celebrate p{font-size:14px;line-height:1.5;margin:6px 0;color:#5d715e;font-weight:850}
+@media(prefers-reduced-motion:no-preference){.farm-celebrate .farm-big{animation:farm-bloom .5s ease-out both}}
+@keyframes farm-bloom{0%{transform:scale(.7);opacity:0}70%{transform:scale(1.13)}100%{transform:scale(1);opacity:1}}
+
 .stage-chooser{margin:0 0 10px;padding:9px 12px;background:#fffdfb;border:1px solid #e6d8d6;border-radius:13px}.stage-chooser summary{cursor:pointer;font-weight:900;color:#805b6e;min-height:35px;display:list-item;align-content:center}.stage-chooser .stage-hint{font-size:12px;color:#6c7782;margin:9px 0 8px}.stage-chooser .mode-nav{margin-bottom:1px}
 .practice-hub{border:2px solid #f2d9cb;background:linear-gradient(120deg,#fffefa,#fef0e9);border-radius:19px;padding:13px;margin-bottom:11px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px}.practice-hub h2{font-size:18px;margin:0 0 3px;color:#a04663}.practice-hub p{font-size:12px;margin:3px 0;color:#716c78;line-height:1.5}.practice-actions{display:flex;align-items:center;justify-content:center;min-width:235px}.practice-launch{border:2px solid #b9dcd5;background:#edfbf6;color:#26735f;min-height:56px;border-radius:13px;padding:9px 14px;font-size:17px;font-weight:900;width:100%}.practice-launch.active{box-shadow:inset 0 0 0 2px #376f5b}.today-summary{font-size:12px;font-weight:800;color:#637378;grid-column:1/-1;border-top:1px solid #f0ded8;padding-top:9px}.weekly{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin:6px 0}.weekly-day{text-align:center;background:#f8f3ee;border-radius:9px;padding:6px 2px;font-size:11px;color:#776977}.weekly-day strong{display:block;font-size:16px;color:#95566c}.weekly-day.current{background:#edf8ee;color:#346f54}.practice-parents{padding:9px;background:#f9f5f0;border-radius:12px;font-size:12px;color:#776f73}
 .story-problem{background:#fff8e8;border:2px solid #eed9a7;color:#795439;border-radius:14px;padding:11px 13px;margin:-3px 0 12px;font-size:clamp(14px,2.5vw,17px);font-weight:850;line-height:1.65}.story-problem .story-label{font-size:12px;color:#a27633;display:block;font-weight:900;margin-bottom:2px}.strategy-tip{margin:10px 0;padding:10px 12px;background:#eff7ff;border:1px solid #c6dff0;border-radius:12px;font-size:15px;font-weight:800;color:#336b8e;line-height:1.65}.strategy-tip small{display:block;font-size:12px;color:#567b93;margin-bottom:3px}
@@ -74,7 +84,7 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 </style>
 </head>
 <body><main>
-<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v3.2</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
+<header class="top"><div class="brand"><span class="brand-icon" aria-hidden="true">🍒</span><div><h1>さくらんぼ たしざん</h1><p class="tagline">玉から、図へ。図から、あたまの中へ。 v3.3</p></div></div><button class="small-btn" id="resetSession" type="button">はじめから</button></header>
 <nav class="learning-tabs" role="tablist" aria-label="まなぶ ないよう">
 <button id="tabPractice" class="learning-tab active" type="button" role="tab" aria-selected="true" aria-controls="practiceView">🍒 10もん れんしゅう</button>
 <button id="tabPattern" class="learning-tab" type="button" role="tab" aria-selected="false" aria-controls="patternView">🔍 たしざんひょうの きまり</button>
@@ -91,15 +101,20 @@ details{background:#ffffffd6;border:1px solid #e6d8d6;border-radius:15px;margin-
 <nav class="mode-nav" id="modeNav" aria-label="れんしゅうの だんかい">
 <button data-mode="beads" class="mode-btn active" aria-pressed="true"><span>🔴</span>① たま</button><button data-mode="picture" class="mode-btn" aria-pressed="false"><span>▦</span>② ず</button><button data-mode="bond" class="mode-btn" aria-pressed="false"><span>🍒</span>③ しき</button><button data-mode="mental" class="mode-btn" aria-pressed="false"><span>💡</span>④ じぶん</button><button data-mode="review" class="mode-btn" aria-pressed="false"><span>🌱</span>おさらい</button>
 </nav></details>
+<div id="farmStatus" class="farm-status" aria-label="さくらんぼ農園の育成状況">
+ <span id="farmIcon" class="farm-figure" aria-hidden="true">🌰</span>
+ <div class="farm-copy"><div class="farm-name">🍒 さくらんぼ のうえん</div><div id="farmDetail" class="farm-detail">10もん クリアで そだつよ</div></div>
+ <div id="farmProgress" class="farm-progress" aria-label="成長段階">0 / 10</div>
+</div>
 <div class="stage-guide" id="guide">① あおい たまを タップして、10を つくろう。</div>
 <div id="game"><div class="progress"><span id="progressLabel">1 / 10もん</span><div class="track"><div id="progressFill" class="fill"></div></div><span id="progressCount">🍒 0こ</span></div>
 <div class="problem-card"><div class="problem-head">さいしょの もんだいを いつも みよう</div><div class="problem" id="problem">8 ＋ 5 ＝ ？</div><div id="bridge" class="bridge"></div></div>
 <div id="storyProblem" class="story-problem hidden"></div>
 <div class="play"><section id="leftPanel" class="panel"></section><section class="panel" id="rightPanel"></section></div>
 <div class="panel question" id="questionPanel"></div></div>
-<div class="completion hidden" id="completion"><div style="font-size:54px">🎉🍒🎉</div><h2 id="completionTitle">10もん クリア！</h2><p id="completionText"></p><div id="suggestBox" class="suggest hidden"></div><button id="repeat" class="primary" type="button">もう いっかい</button><div class="actions"><button type="button" id="tryNextStage" class="secondary hidden">つぎの だんかいを ためす</button></div><p class="small-note">「つぎへ」は練習の提案だよ。できる・できないを決めるテストではないよ。</p>
+<div class="completion hidden" id="completion"><div style="font-size:54px">🎉🍒🎉</div><h2 id="completionTitle">10もん クリア！</h2><p id="completionText"></p><div id="farmCelebrate" class="farm-celebrate" aria-live="polite"><div id="farmBig" class="farm-big" aria-hidden="true">🌱</div><h3 id="farmCelebrateTitle">めが でた！</h3><p id="farmCelebrateText"></p></div><div id="suggestBox" class="suggest hidden"></div><button id="repeat" class="primary" type="button">もう いっかい</button><div class="actions"><button type="button" id="tryNextStage" class="secondary hidden">つぎの だんかいを ためす</button></div><p class="small-note">「つぎへ」は練習の提案だよ。できる・できないを決めるテストではないよ。</p>
 </div>
-<details id="parentPanel"><summary>おうちの ひとへ｜練習記録と使い方</summary><p>①玉を動かす → ②図を見て想像する → ③さくらんぼ式で考える → ④図なしで答える、の順に支援を減らします。どの段階にも戻れます。おさらいは前に間違えたりヒントを使った問題を優先し、まず自力で考えます。「きょうの10もん」は式を見て自力で解き、必要なときだけヒントを使います。前の日の苦手問題や初めての問題を混ぜ、ときどき短い文章題と別の計算方法を紹介します。</p><p>各段階で「直近5問のうち4問を初回正解・ヒントなし」で次の段階を試す提案が出ます。これはアプリ独自の練習上の目安で、教育研究で確立された合格基準ではありません。理解の確認には、日を空けた復習や紙の問題も役立ちます。</p><p>記録はこの端末のブラウザ内だけに最大300問まで保存します。氏名や外部サービスへの学習情報の送信機能はありません。ブラウザのデータ消去・別端末では消失します。GitHub Pagesへの通常のアクセス通信は別です。</p><button type="button" id="clearStats" class="small-btn">この端末の学習記録を消す</button><span id="storageStatus" class="tiny"></span></details>
+<details id="parentPanel"><summary>おうちの ひとへ｜練習記録と使い方</summary><p>①玉を動かす → ②図を見て想像する → ③さくらんぼ式で考える → ④図なしで答える、の順に支援を減らします。どの段階にも戻れます。おさらいは前に間違えたりヒントを使った問題を優先し、まず自力で考えます。「きょうの10もん」は式を見て自力で解き、必要なときだけヒントを使います。前の日の苦手問題や初めての問題を混ぜ、ときどき短い文章題と別の計算方法を紹介します。</p><p>各段階で「直近5問のうち4問を初回正解・ヒントなし」で次の段階を試す提案が出ます。これはアプリ独自の練習上の目安で、教育研究で確立された合格基準ではありません。理解の確認には、日を空けた復習や紙の問題も役立ちます。</p><p>記録はこの端末のブラウザ内だけに最大300問まで保存します。農園の成長（0〜10段階）は別の端末内データで保存し、100問分の練習完了で出荷できます。実際の栽培期間とは異なる演出です。氏名や外部サービスへの学習情報の送信機能はありません。ブラウザのデータ消去・別端末では消失します。GitHub Pagesへの通常のアクセス通信は別です。</p><button type="button" id="clearStats" class="small-btn">この端末の学習記録と農園を消す</button><span id="storageStatus" class="tiny"></span></details>
 </section>
 <section id="patternView" role="tabpanel" aria-labelledby="tabPattern" hidden>
 <div class="pattern-explorer" id="patternExplorer"><h2>🔍 たしざんひょうの きまり</h2>
@@ -124,6 +139,46 @@ const MODES=[...STAGES,'daily','drill'];
 const LABELS={beads:'① たま',picture:'② ず',bond:'③ しき',mental:'④ じぶん',review:'おさらい',daily:'きょうの10もん',drill:'どんどん計算'};
 const GUIDES={beads:'① あおい たまを タップして、10を つくろう。',picture:'② ずを みて、あたまの なかで たまを うごかそう。',bond:'③ さくらんぼの かずを かんがえよう。',mental:'④ まずは ずを みないで こたえてみよう。',review:'🌱 まえの もんだいを、じぶんの ちからで おさらい。',daily:'🎯 きょうの10もん。まずは じぶんの ちからで こたえよう。',drill:'⚡ どんどん計算。じかんよりも ただしさを たいせつに。'};
 const KEY='sakuranbo-learning-v2-history';
+const FARM_KEY='sakuranbo-farm-v1';
+const FARM_STAGES=[
+ {icon:'🌰',name:'たねを うえよう'},
+ {icon:'🌱',name:'めが でた！'},
+ {icon:'🌿',name:'はっぱが でた！'},
+ {icon:'🪴',name:'なえが そだった！'},
+ {icon:'🌳',name:'木に なった！'},
+ {icon:'🌸',name:'はなが さいた！'},
+ {icon:'🌼',name:'みの じゅんび！'},
+ {icon:'🟢',name:'みが できた！'},
+ {icon:'🍒',name:'あかく なった！'},
+ {icon:'🧺',name:'しゅうかく！'},
+ {icon:'🚚',name:'しゅっか かんりょう！'}
+];
+let farmStage=0;
+let farmStorageOk=true;
+try{
+ const stored=localStorage.getItem(FARM_KEY);
+ if(stored!==null){const n=Number(stored);if(Number.isInteger(n)&&n>=0&&n<=10)farmStage=n;}
+}catch(e){farmStorageOk=false;}
+function updateFarmStatus(){
+ const p=FARM_STAGES[farmStage];
+ $('farmIcon').textContent=p.icon;
+ $('farmDetail').textContent=farmStage===10?'しゅっか かんりょう！ つぎの10もんで あたらしい木だよ。':p.name+' あと10もんで つぎへ！';
+ $('farmProgress').textContent=farmStage+' / 10';
+}
+function growFarm(){
+ farmStage=farmStage===10?1:farmStage+1;
+ try{localStorage.setItem(FARM_KEY,String(farmStage));farmStorageOk=true;}catch(e){farmStorageOk=false;}
+ updateFarmStatus();
+ const p=FARM_STAGES[farmStage];
+ $('farmBig').textContent=p.icon;
+ $('farmCelebrateTitle').textContent=p.name;
+ $('farmCelebrateText').textContent=farmStage===10?'100もんぶん がんばったね！ さくらんぼを しゅっかしたよ。':'10もん クリア！ さくらんぼが ひとつ せいちょうしたよ。';
+}
+function clearFarm(){
+ farmStage=0;
+ try{localStorage.removeItem(FARM_KEY);farmStorageOk=true;}catch(e){farmStorageOk=false;}
+ updateFarmStatus();
+}
 let history=[];let storageOk=true;
 try{const raw=localStorage.getItem(KEY);if(raw){const j=JSON.parse(raw);if(Array.isArray(j))history=j.filter(r=>Number.isInteger(r.a)&&r.a>=6&&r.a<=9&&Number.isInteger(r.b)&&r.b>=2&&r.b<=9&&r.a+r.b>10&&MODES.includes(r.mode)&&typeof r.date==='string');}}catch(e){storageOk=false;}
 let s={mode:'beads',index:0,limit:10,q:null,shown:[],step:0,moved:0,wrong:0,hints:0,typed:'',feedback:'',feedbackError:false,done:false,sessionResults:[],reviewPool:[],plan:[]};
@@ -275,7 +330,7 @@ function render(){
  updateStats();
 }
 function advance(){s.index++;if(s.index>=s.limit){finishSession();return;}setQuestion();render();window.scrollTo({top:0,behavior:'auto'})}
-function finishSession(){s.done=true;$('game').classList.add('hidden');$('completion').classList.remove('hidden');$('completionTitle').textContent=`${s.limit}もん おわったよ！`;
+function finishSession(){if(s.done||s.sessionResults.length<s.limit)return;s.done=true;growFarm();$('game').classList.add('hidden');$('completion').classList.remove('hidden');$('completionTitle').textContent=`${s.limit}もん おわったよ！`;
  const clean=s.sessionResults.filter(r=>r.clean).length;$('completionText').textContent=`ヒントなし・さいしょの こたえで できたのは ${clean} / ${s.limit}もん。がんばったね！`;
  let nextMode=STAGES.indexOf(s.mode)+1,eligible=STAGES.indexOf(s.mode)>=0&&s.mode!=='review'&&s.sessionResults.length>=5&&s.sessionResults.slice(-5).filter(r=>r.clean).length>=4&&nextMode<4;
  $('suggestBox').classList.toggle('hidden',!eligible);$('tryNextStage').classList.toggle('hidden',!eligible);
@@ -364,7 +419,7 @@ $('dailyStart').addEventListener('click',()=>start('daily'));
 
 $('modeNav').addEventListener('click',e=>{const btn=e.target.closest('[data-mode]');if(!btn||btn.dataset.mode===s.mode)return;start(btn.dataset.mode)});
 $('resetSession').addEventListener('click',()=>start(s.mode));$('repeat').addEventListener('click',()=>start(s.mode));$('tryNextStage').addEventListener('click',()=>{let i=MODES.indexOf(s.mode);if(i<3)start(STAGES[i+1])});
-$('clearStats').addEventListener('click',()=>{if(!confirm('この端末の がくしゅうきろくを ぜんぶ けしますか？'))return;history=[];try{localStorage.removeItem(KEY)}catch(e){storageOk=false}updateStats()});
+$('clearStats').addEventListener('click',()=>{if(!confirm('この端末の がくしゅうきろくと のうえんを ぜんぶ けしますか？'))return;history=[];try{localStorage.removeItem(KEY)}catch(e){storageOk=false}clearFarm();updateStats()});
 function selectLearningTab(name){
  const practice=name==='practice';
  $('practiceView').hidden=!practice;
@@ -380,6 +435,7 @@ $('tabPractice').addEventListener('click',()=>selectLearningTab('practice'));
 $('tabPattern').addEventListener('click',()=>selectLearningTab('pattern'));
 $('tabPractice').addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();$('tabPattern').focus();selectLearningTab('pattern')}});
 $('tabPattern').addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();$('tabPractice').focus();selectLearningTab('practice')}});
+updateFarmStatus();
 resetPatternTable();
 $('patternRestart').addEventListener('click',resetPatternTable);
 start('beads');
